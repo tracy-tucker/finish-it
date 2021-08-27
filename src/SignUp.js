@@ -1,49 +1,27 @@
-// import React, { useCallback } from 'react'
-// import { withRouter } from 'react-router'
-// import { auth }  from './firebase'
+import { useCallback } from 'react'
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
 
-// const SignUp = ({ history }) => {
-//     const handleSignUp = useCallback(async event => {
-//         event.preventDefault();
-//         const { email, password } = event.target.elements;
-//         try {
-//             await auth
-//             .auth()
-//             .createUserWithEmailAndPassword(email.value, password.value);
-//             history.push("/");
-//         } catch (error) {
-//             alert(error);
-//         }
-//     }, [history]);
+export const SignUp = () => {
+  const handleSubmit = useCallback(async e => {
+    e.preventDefault()
 
-//     return (
-//         <div>
-//             <h1>Sign up to view this department's progress</h1>
-//             <form onSubmit={handleSignUp}>
-//                 <label>
-//                     Email
-//                     <input name="email" type="email" placeholder="Email goes here..." />
-//                 </label>
-//                 <label>
-//                     Password
-//                     <input name="password" type="password" placeholder="Password goes here..." />
-//                 </label>
-//                 <button type="submit">Sign Up</button>
-//             </form>
-//         </div>
-//     );
-// };
+    const { email, password } = e.target.elements
+    const auth = getAuth()
+    try {
+      await createUserWithEmailAndPassword(auth, email.value, password.value)
+    } catch (e) {
+      alert(e.message)
+    }
+  }, [])
 
-// export default withRouter(SignUp);
-
-import React from 'react'
-
-function help() {
-    return (
-        <div>
-            
-        </div>
-    )
+  return (
+    <>
+      <h1>Sign Up</h1>
+      <form onSubmit={handleSubmit}>
+        <input name="email" placeholder="email" type="email" />
+        <input name="password" placeholder="password" type="password" />
+        <button type="submit">Sign Up</button>
+      </form>
+    </>
+  )
 }
-
-export default help
