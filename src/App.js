@@ -1,24 +1,54 @@
-import './App.css';
-import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import Dashboard from './Dashboard';
-import Login from './Login';
-import SignUp from './SignUp'
-import { AuthProvider } from './Auth';
-import PrivateRoute from './PrivateRoute';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Redirect
+} from 'react-router-dom'
+import { Home } from './Home'
+import { SignUp } from './SignUp'
+import { Login } from './Login'
+import { AuthContextProvider, useAuthState } from './firebase'
 
-const App = () => {
+const AuthenticatedRoute = ({ component: C, ...props }) => {
+  const { isAuthenticated } = useAuthState()
+  console.log(`AuthenticatedRoute: ${isAuthenticated}`)
   return (
-    <AuthProvider>
-      <Router>
-        <div>
-          <PrivateRoute exact path="/" component={Dashboard} />
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/signup" component={SignUp} />
-        </div>
-      </Router>
-    </AuthProvider>
-  );
+    <Route
+      {...props}
+      render={routeProps =>
+        isAuthenticated ? <C {...routeProps} /> : <Redirect to="/login" />
+      }
+    />
+  )
 }
 
-export default App;
+const UnauthenticatedRoute = ({ component: C, ...props }) => {
+  const { isAuthenticated } = useAuthState()
+  console.log(`UnauthenticatedRoute: ${isAuthenticated}`)
+  return (
+    <Route
+      {...props}
+      render={routeProps =>
+        !isAuthenticated ? <C {...routeProps} /> : <Redirect to="/" />
+      }
+    />
+  )
+}
+
+function App() {
+  return (
+    <AuthContextProvider>
+      <Router>
+        <div>
+          <Link to="/">Home</Link> | <Link to="/login">Login</Link> |{' '}
+          <Link to="/signup">SignUp</Link>
+        </div>
+        <AuthenticatedRoute exact path="/" component={Home} />
+        <UnauthenticatedRoute exact path="/signup" component={SignUp} />
+        <UnauthenticatedRoute exact path="/login" component={Login} />
+      </Router>
+    </AuthContextProvider>
+  )
+}
+
+export default App
