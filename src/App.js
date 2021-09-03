@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom'
 import { Home } from './Home'
 import { SignUp } from './SignUp'
+import { Profile } from './Profile'
 import { Login } from './Login'
 import { AuthContextProvider, useAuthState } from './firebase'
 
@@ -44,6 +45,7 @@ function App() {
           <Link to="/signup">SignUp</Link>
         </div>
         <AuthenticatedRoute exact path="/" component={Home} />
+        <AuthenticatedRoute exact path="/profile" component={Profile} />
         <UnauthenticatedRoute exact path="/signup" component={SignUp} />
         <UnauthenticatedRoute exact path="/login" component={Login} />
       </Router>

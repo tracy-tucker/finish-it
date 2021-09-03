@@ -7,6 +7,7 @@ export const Home = () => {
   return (
     <>
       <h1>Welcome {user?.email}</h1>
+      <p>Hello?</p>
       <button onClick={() => signOut(getAuth())}>Sign out</button>
     </>
   )
