@@ -40,7 +40,7 @@ function App() {
     <AuthContextProvider>
       <Router>
         <div>
-          <Link to="/">Home</Link> | <Link to="/login">Login</Link> |{' '}
+          <Link to="/">Home</Link> | <Link to="/profile">Profile</Link> | <Link to="/login">Login</Link> |{' '}
           <Link to="/signup">SignUp</Link>
         </div>
         <AuthenticatedRoute exact path="/" component={Home} />

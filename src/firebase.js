@@ -12,6 +12,7 @@ export const firebaseApp = initializeApp({
   measurementId: "G-QH72MGPVLK"
 })
 
+// Holds the state of the current user signed in.
 export const AuthContext = createContext()
 
 export const AuthContextProvider = props => {
@@ -29,3 +30,5 @@ export const useAuthState = () => {
   const auth = useContext(AuthContext)
   return { ...auth, isAuthenticated: auth.user != null }
 }
+
+export const db = firebaseApp.firestore()
