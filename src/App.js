@@ -63,20 +63,18 @@ import {
   Switch,
   Route
 } from 'react-router-dom'
+import * as ROUTES from './constants/routes'
 import Hero from './components/Hero'
 import Navbar from './components/Navbar'
+import SignUp from './components/SignUp'
 
 function App() {
   return (
     <Router>
       <Navbar />
       <Switch>
-        <Route path='/profile'><h1>Profile Welcome</h1></Route>
-        <Route exact path='/'>
-        <div clasName="App">
-          <Hero />
-        </div>
-        </Route>
+        <Route path={ROUTES.SIGNUP} component={SignUp} />
+        <Route exact path={ROUTES.HOME} component={Hero} />
       </Switch>
     </Router>
   )

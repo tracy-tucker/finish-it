@@ -26,16 +26,35 @@
 //   )
 // }
 
-import React from 'react'
+import React, { useState } from 'react'
+import './styles.css'
 
 const SignUp = () => {
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
     return (
-        <form>
-            <label>Email</label>
-            <input type='email' />
-            <label>Password</label>
-            <input type='password' />
-        </form>
+        <div className='container'>
+            <form onSubmit={(e) => {
+                    e.preventDefault()
+                    alert(email + " " + password);
+                }}
+            >
+                <label>Email</label>
+                <input
+                    type='email'
+                    value={email}
+                    onChange={(event) => setEmail(event.target.value)}
+                />
+                <label>Password</label>
+                <input
+                    type='password'
+                    value={password}
+                    onChange={(event) => setPassword(event.target.value)}
+                />
+                <button type='submit'>Sign Up</button>
+            </form>
+        </div>
     )
 }
 
