@@ -26,27 +26,35 @@
 //   )
 // }
 
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import { FirebaseContext } from '../context/FirebaseContext'
 import './styles.css'
 
 const SignUp = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
+    const { firebase } = useContext(FirebaseContext)
+
     return (
         <div className='container'>
+            <h1>Sign Up</h1>
             <form onSubmit={(e) => {
                     e.preventDefault()
-                    alert(email + " " + password);
+                    firebase.auth().createUserWithEmailAndPassword(email, password)
+                    .then(() => alert("sign up!"))
+                    .catch((error) => alert(error.message))
+                    setEmail('')
+                    setPassword('')
                 }}
             >
-                <label>Email</label>
+                <label>Enter your email</label>
                 <input
                     type='email'
                     value={email}
                     onChange={(event) => setEmail(event.target.value)}
                 />
-                <label>Password</label>
+                <label>Enter your password</label>
                 <input
                     type='password'
                     value={password}
