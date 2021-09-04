@@ -27,12 +27,15 @@
 // }
 
 import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import '../components/styles.css'
+import { DASHBOARD } from '../constants/routes'
 import { useAuth } from '../context/AuthContext'
 
 const SignUp = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const history = useHistory();
 
     const auth = useAuth()
 
@@ -41,7 +44,11 @@ const SignUp = () => {
             <h1>Sign Up</h1>
             <form onSubmit={(e) => {
                     e.preventDefault()
-                    auth.signup({email, password, callback: () => {}})
+                    auth.signup({
+                        email,
+                        password,
+                        callback: () => history.push(DASHBOARD)
+                    })
                     setEmail('')
                     setPassword('')
                 }}

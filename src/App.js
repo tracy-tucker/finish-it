@@ -70,6 +70,7 @@ import SignUp from './pages/SignUp'
 import Home from './pages/Home'
 import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
+import PrivateRoute from './components/PrivateRoute'
 
 function App() {
   return (
@@ -78,8 +79,10 @@ function App() {
       <Hero />
       <Switch>
         <Route path={ROUTES.SIGNUP} component={SignUp} />
+        <PrivateRoute>
+          <Dashboard />
+        </PrivateRoute>
         <Route path={ROUTES.LOGIN} component={Login} />
-        <Route path={ROUTES.DASHBOARD} component={Dashboard} />
         <Route path={ROUTES.HOME} component={Home} />
       </Switch>
     </Router>
