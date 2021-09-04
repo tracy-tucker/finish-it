@@ -58,15 +58,27 @@
 // Add "Loading" message
 
 import React from 'react'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from 'react-router-dom'
 import Hero from './components/Hero'
 import Navbar from './components/Navbar'
 
 function App() {
   return (
-    <div claaName="App">
+    <Router>
       <Navbar />
-      <Hero />
-    </div>
+      <Switch>
+        <Route path='/profile'><h1>Profile Welcome</h1></Route>
+        <Route exact path='/'>
+        <div clasName="App">
+          <Hero />
+        </div>
+        </Route>
+      </Switch>
+    </Router>
   )
 }
 
