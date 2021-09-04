@@ -67,6 +67,7 @@ import * as ROUTES from './constants/routes'
 import Hero from './components/Hero'
 import Navbar from './components/Navbar'
 import SignUp from './pages/SignUp'
+import Home from './pages/Home'
 import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
 
@@ -74,11 +75,12 @@ function App() {
   return (
     <Router>
       <Navbar />
+      <Hero />
       <Switch>
-        <Route exact path={ROUTES.HOME} component={Hero} />
         <Route path={ROUTES.SIGNUP} component={SignUp} />
         <Route path={ROUTES.LOGIN} component={Login} />
         <Route path={ROUTES.DASHBOARD} component={Dashboard} />
+        <Route path={ROUTES.HOME} component={Home} />
       </Switch>
     </Router>
   )
