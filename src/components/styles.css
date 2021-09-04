@@ -1,6 +1,6 @@
 .Navbar {
     width: 100%;
-    background-color: black;
+    background-color: #101010;
     opacity: 0.75;
     color: white;
     position: fixed;
@@ -8,3 +8,18 @@
     padding-bottom: 10px;
     top: 0;
 }
+
+.Hero {
+    display: block;
+    background: rgb(67, 62, 156);
+    background: linear-gradient(
+      90deg,
+      rgba(35, 21, 87, 1) 0%,
+      rgba(68, 16, 122, 1) 29%,
+      rgba(255, 19, 97, 1) 67%
+    );
+    height: 100%;
+    width: 100%;
+    padding: 20% 20%;
+    color: white;
+  }
