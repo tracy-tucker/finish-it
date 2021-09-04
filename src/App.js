@@ -79,10 +79,10 @@ function App() {
       <Hero />
       <Switch>
         <Route path={ROUTES.SIGNUP} component={SignUp} />
+        <Route path={ROUTES.LOGIN} component={Login} />
         <PrivateRoute>
           <Dashboard />
         </PrivateRoute>
-        <Route path={ROUTES.LOGIN} component={Login} />
         <Route path={ROUTES.HOME} component={Home} />
       </Switch>
     </Router>

@@ -35,7 +35,7 @@ import { useAuth } from '../context/AuthContext'
 const SignUp = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const history = useHistory();
+    let history = useHistory();
 
     const auth = useAuth()
 

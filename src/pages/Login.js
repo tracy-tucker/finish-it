@@ -28,13 +28,17 @@
 
 // Add a better message handling for user's experience.
 
-import React, { useState, useContext } from 'react'
-import { FirebaseContext } from '../context/FirebaseContext'
+import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
+import { DASHBOARD } from '../constants/routes'
 import '../components/styles.css'
+import { useAuth } from '../context/AuthContext'
 
 const Login = () => {
     const [emailValue, setEmailValue] = useState('')
     const [passwordValue, setPasswordValue] = useState('')
+    const auth = useAuth
+    let history = useHistory()
 
     // const { firebase } = useContext(FirebaseContext)
 
@@ -43,11 +47,11 @@ const Login = () => {
             <h1>Log In!</h1>
             <form onSubmit={(e) => {
                     e.preventDefault()
-                    // firebase.auth().createUserWithEmailAndPassword(email, password)
-                    // .then(() => alert("sign up!"))
-                    // .catch((error) => alert(error.message))
-                    // setEmail('')
-                    // setPassword('')
+                    auth.signin({
+                        email: emailValue,
+                        password: passwordValue,
+                        callback: () => history.push(DASHBOARD)
+                    })
                 }}
             >
                 <label>Enter your email</label>
