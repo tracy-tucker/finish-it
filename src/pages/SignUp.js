@@ -28,7 +28,7 @@
 
 import React, { useState, useContext } from 'react'
 import { FirebaseContext } from '../context/FirebaseContext'
-import './styles.css'
+import '../components/styles.css'
 
 const SignUp = () => {
     const [email, setEmail] = useState('')
@@ -51,12 +51,14 @@ const SignUp = () => {
                 <label>Enter your email</label>
                 <input
                     type='email'
+                    placeholder="email@email.com"
                     value={email}
                     onChange={(event) => setEmail(event.target.value)}
                 />
                 <label>Enter your password</label>
                 <input
                     type='password'
+                    placeholder="Password"
                     value={password}
                     onChange={(event) => setPassword(event.target.value)}
                 />
