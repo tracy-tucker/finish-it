@@ -25,3 +25,18 @@
 //     </>
 //   )
 // }
+
+import React from 'react'
+
+const SignUp = () => {
+    return (
+        <form>
+            <label>Email</label>
+            <input type='email' />
+            <label>Password</label>
+            <input type='password' />
+        </form>
+    )
+}
+
+export default SignUp
