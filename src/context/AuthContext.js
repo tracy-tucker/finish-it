@@ -18,12 +18,13 @@ export const useAuth = () => {
 
 // Provider hook that creates auth object and handles state
 function useProvideAuth() {
+//   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState(null);
-  const { firebase } = useContext(FirebaseContext)
+  const { firebase } = useContext(FirebaseContext);
 
   // Wrap any Firebase methods we want to use making sure ...
   // ... to save the user to state.
-  const signin = (email, password, callback) => {
+  const signin = ({ email, password, callback }) => {
     return firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
@@ -34,7 +35,7 @@ function useProvideAuth() {
       });
   };
 
-  const signup = (email, password, callback) => {
+  const signup = ({ email, password, callback }) => {
     return firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
@@ -71,7 +72,7 @@ function useProvideAuth() {
         return true;
       });
   };
-  
+
   // Subscribe to user on mount
   // Because this sets state in the callback it will cause any ...
   // ... component that utilizes this hook to re-render with the ...
@@ -83,12 +84,16 @@ function useProvideAuth() {
       } else {
         setUser(false);
       }
+    //   setIsLoading(false);
     });
+
     // Cleanup subscription on unmount
     return () => unsubscribe();
-  }, []);
+  }, [firebase]);
+
   // Return the user object and auth methods
   return {
+    // isLoading,
     user,
     signin,
     signup,
