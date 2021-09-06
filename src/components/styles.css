@@ -53,3 +53,18 @@
       margin-top: 10px;
       margin-bottom: 5px; 
   }
+
+  .EventContainer {
+      background-color: #EEE;
+      margin: 0 auto;
+      max-width: 90%;
+  }
+
+  .EventContainer input {
+      width: 90%;
+  }
+
+  .EventContainer textarea {
+      width: 90%;
+      height: 150px;
+  }
