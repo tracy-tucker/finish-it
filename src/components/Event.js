@@ -1,12 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../components/styles.css'
 
 const Event = () => {
+
+    const [formData, setFormData] = useState({
+        title: "",
+        date: "",
+        description: ""
+    })
     
     const saveEvent = (event) => {
         event.preventDefault();
-        const elementsArray = [...event.target.value]
-        console.log(elementsArray);
+        console.log(formData);
     }
 
     return (
@@ -14,11 +19,28 @@ const Event = () => {
             <h1>Enter An Event</h1>
             <form onSubmit={saveEvent}>
                 <label>Title</label>
-                <input type="text" id="title" placeholder="Enter event name here" />
+                    <input
+                    onChange={e => setFormData({...formData, title: e.target.value})}
+                    value={formData.title}
+                    type="text"
+                    id="title"
+                    name="title"
+                    placeholder="Enter event name here"
+                    />
                 <label>Date</label>
-                <input type="date" id="date" />
+                    <input
+                    onChange={e => setFormData({...formData, date: e.target.value})}
+                    value={formData.date}
+                    type="date"
+                    id="date"
+                    name="date"
+                    />
                 <label>Description</label>
-                <textarea id="descrption"></textarea>
+                <textarea
+                onChange={e => setFormData({...formData, description: e.target.value})}
+                value={formData.description}
+                name="description"
+                id="descrption"></textarea>
                 <input type="submit" value="Submit" />
             </form>
         </div>
@@ -28,3 +50,4 @@ const Event = () => {
 export default Event
 
 // The event input needs to be private to the manager only
+// video left off at 9:41
