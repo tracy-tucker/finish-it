@@ -1,35 +1,7 @@
-// import { useCallback } from 'react'
-// import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
-
-// export const SignUp = () => {
-//   const handleSubmit = useCallback(async e => {
-//     e.preventDefault()
-
-//     const { email, password } = e.target.elements
-//     const auth = getAuth()
-//     try {
-//       await createUserWithEmailAndPassword(auth, email.value, password.value)
-//     } catch (e) {
-//       alert(e.message)
-//     }
-//   }, [])
-
-//   return (
-//     <>
-//       <h1>Sign Up</h1>
-//       <form onSubmit={handleSubmit}>
-//         <input name="email" placeholder="email" type="email" />
-//         <input name="password" placeholder="password" type="password" />
-//         <button type="submit">Sign Up</button>
-//       </form>
-//     </>
-//   )
-// }
-
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import '../components/styles.css'
-import { DASHBOARD } from '../constants/routes'
+import { PROFILE } from '../constants/routes'
 import { useAuth } from '../context/AuthContext'
 
 const SignUp = () => {
@@ -47,7 +19,7 @@ const SignUp = () => {
                     auth.signup({
                         email,
                         password,
-                        callback: () => history.push(DASHBOARD)
+                        callback: () => history.push(PROFILE)
                     })
                     setEmail('')
                     setPassword('')

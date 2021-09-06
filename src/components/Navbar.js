@@ -12,6 +12,7 @@ function Navbar() {
                 <Link to={ROUTES.HOME}><li>Home</li></Link>
                 {auth.user ? (
                     <>
+                        <Link to={ROUTES.PROFILE}><li>Manage Profile</li></Link>
                         <Link to={ROUTES.DASHBOARD}><li>Go to Dashboard</li></Link>
                         <li onClick={() => auth.signout()}>Sign Out</li>
                     </>
