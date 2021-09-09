@@ -3,15 +3,38 @@ import { db } from '../firebase/config'
 
 const Events = () => {
 
+    const [loading, setLoading] = useState(true)
     const [events, setEvents] = useState([]);
+
+    useEffect(() => {
+        const getEventsFromFirebase = [];
+        const subscriber = db
+            .collection('events')
+            .onSnapshot((querySnapshot) => {
+            querySnapshot.forEach(doc => {
+                getEventsFromFirebase.push({
+                    ...doc.data(),
+                    key: doc.id,
+                })
+                setEvents(getEventsFromFirebase)
+                setLoading(false)
+            })
+        })
+        return () => subscriber();
+    }, [])
+
+    if (loading) {
+        return <h1>Loading data...</h1>
+    }
+
     return (
         <div>
             <h1>EVENTS</h1>
-            <p>... list of events</p>
-            {storedEvents.map((event) => {
-                <p>{event.title}</p>
-            })}
-            
+            {events.length > 0 ? (
+                events.map(event => <div key={event.key}>{event.title}</div>)
+            ) : (
+                <h1>No Events Yet</h1>
+            )}            
         </div>
     )
 }
