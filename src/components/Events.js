@@ -3,6 +3,7 @@ import { db } from '../firebase/config'
 
 const Events = () => {
 
+    // to set a loading message for the user
     const [loading, setLoading] = useState(true)
     const [events, setEvents] = useState([]);
 
@@ -16,10 +17,12 @@ const Events = () => {
                     ...doc.data(),
                     key: doc.id,
                 })
-                setEvents(getEventsFromFirebase)
-                setLoading(false)
             })
+            setEvents(getEventsFromFirebase)
+            setLoading(false)
         })
+
+        // useEffect cleanup function
         return () => subscriber();
     }, [])
 

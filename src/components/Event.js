@@ -15,35 +15,37 @@ const Event = () => {
     }
 
     return (
-        <div className="EventContainer">
-            <h1>Enter An Event</h1>
-            <form onSubmit={saveEvent}>
-                <label>Title</label>
-                    <input
-                    onChange={e => setFormData({...formData, title: e.target.value})}
-                    value={formData.title}
-                    type="text"
-                    id="title"
-                    name="title"
-                    placeholder="Enter event name here"
-                    />
-                <label>Date</label>
-                    <input
-                    onChange={e => setFormData({...formData, date: e.target.value})}
-                    value={formData.date}
-                    type="date"
-                    id="date"
-                    name="date"
-                    />
-                <label>Description</label>
-                <textarea
-                onChange={e => setFormData({...formData, description: e.target.value})}
-                value={formData.description}
-                name="description"
-                id="descrption"></textarea>
-                <input type="submit" value="Submit" />
-            </form>
-        </div>
+        <>
+            <div className="EventContainer">
+                <h1>Enter An Event</h1>
+                <form onSubmit={saveEvent}>
+                    <label>Title</label>
+                        <input
+                        onChange={e => setFormData({...formData, title: e.target.value})}
+                        value={formData.title}
+                        type="text"
+                        id="title"
+                        name="title"
+                        placeholder="Enter event name here"
+                        />
+                    <label>Date</label>
+                        <input
+                        onChange={e => setFormData({...formData, date: e.target.value})}
+                        value={formData.date}
+                        type="date"
+                        id="date"
+                        name="date"
+                        />
+                    <label>Description</label>
+                    <textarea
+                    onChange={e => setFormData({...formData, description: e.target.value})}
+                    value={formData.description}
+                    name="description"
+                    id="descrption"></textarea>
+                    <input type="submit" value="Submit" />
+                </form>
+            </div>
+        </>
     )
 }
 
