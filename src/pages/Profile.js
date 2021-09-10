@@ -1,11 +1,11 @@
 import React from 'react'
-import Event from '../components/Event'
+import EventInput from '../components/EventInput'
 
 const Profile = () => {
     return (
         <div>
             <p>Testing...PROFILE PAGE</p>
-            <Event />
+            <EventInput />
         </div>
     )
 }

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import '../components/styles.css'
 
-const Event = () => {
+const EventInput = () => {
 
     const [formData, setFormData] = useState({
         title: "",
@@ -49,7 +49,7 @@ const Event = () => {
     )
 }
 
-export default Event
+export default EventInput
 
 // The event input needs to be private to the manager only
 // video left off at 9:41
