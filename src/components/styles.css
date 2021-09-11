@@ -68,3 +68,13 @@
       width: 90%;
       height: 150px;
   }
+
+  .EventsList {
+      max-width: 90%;
+      margin: 0 auto;
+      margin-bottom: 2rem;
+  }
+
+  .EventsList h2 {
+      color: blue;
+  }

@@ -31,14 +31,14 @@ const EventsList = () => {
     }
 
     return (
-        <div>
+        <div className="EventsList">
             <h1>EVENTS</h1>
             {events.length > 0 ? (
                 events.map(event =>
                 <div key={event.key}>
-                    <h1>{event.title}</h1>
-                    <h3>{event.date}</h3>
-                    <p>{event.description}</p>
+                    <h2>TITLE: {event.title}</h2>
+                    <h3>DATE: {event.date}</h3>
+                    <p>DETAILS: {event.description}</p>
                 </div>)
             ) : (
                 <h1>No Events Yet</h1>
