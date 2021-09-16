@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { db } from '../firebase/config'
 import '../components/styles.css'
 
 const EventInput = () => {
@@ -11,7 +12,16 @@ const EventInput = () => {
     
     const saveEvent = (event) => {
         event.preventDefault();
-        console.log(formData);
+        
+        const elementsArray = [...event.target.elements];
+
+        const formData = elementsArray.reduce((accumulator, currentValue) => {
+            if (currentValue.id) {
+                accumulator[currentValue.id] = currentValue.value;
+            }
+            return accumulator
+        }, {});
+        db.collection('events').add(formData);
     }
 
     return (
