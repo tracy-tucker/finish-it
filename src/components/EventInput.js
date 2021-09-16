@@ -22,6 +22,7 @@ const EventInput = () => {
             return accumulator
         }, {});
         db.collection('events').add(formData);
+        console.log(formData);
     }
 
     return (
@@ -47,13 +48,15 @@ const EventInput = () => {
                         name="date"
                         />
                     <label>Description</label>
-                    <textarea
-                    onChange={e => setFormData({...formData, description: e.target.value})}
-                    value={formData.description}
-                    name="description"
-                    placeholder="Enter event details here"
-                    id="descrption"></textarea>
-                    <input type="submit" value="Submit" />
+                        <textarea
+                        onChange={e => setFormData({...formData, description: e.target.value})}
+                        value={formData.description}
+                        type="text"
+                        id="descrption"
+                        name="description"
+                        placeholder="Enter event details here"
+                        ></textarea>
+                        <input type="submit" value="Submit" />
                 </form>
             </div>
         </>

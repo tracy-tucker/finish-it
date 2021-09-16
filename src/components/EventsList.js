@@ -42,11 +42,18 @@ const EventsList = () => {
                 </div>)
             ) : (
                 <h1>No Events Yet</h1>
-            )}            
+            )}
+            {events.map(event =>
+                <div key={event.key}>
+                    <p>{event.description}</p>
+                </div>
+            )}           
         </div>
     )
 }
 
 export default EventsList
 
-// A list of Events should appear on the dashboard for ALL signed-in employees to see.
+// event.description is the only piece not appearing
+// The initial "description" created within Firestore appears
+// But none of the form-created descriptions appear
