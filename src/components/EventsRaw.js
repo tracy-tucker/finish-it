@@ -29,6 +29,10 @@ const EventsRaw = () => {
         return <h1>Loading data...</h1>
     }
 
+    const deleteEvent = (el) => {
+        console.log(el)
+    }
+
     return (
         <div className="EventsList">
             <h1>EVENTS</h1>
@@ -39,7 +43,7 @@ const EventsRaw = () => {
                     <h2>TITLE: {event.title}</h2>
                     <h3>DATE: {event.date}</h3>
                     <p>DETAILS: {event.description}</p>
-                    <button>EDIT EVENT</button> <br/>
+                    <button onClick={() => deleteEvent(event.key)}>EDIT EVENT</button> <br/>
                 </div>)
             ) : (
                 <h1>No Events Yet</h1>

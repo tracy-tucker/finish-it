@@ -42,12 +42,7 @@ const EventsList = () => {
                 </div>)
             ) : (
                 <h1>No Events Yet</h1>
-            )}
-            {events.map(event =>
-                <div key={event.key}>
-                    <p>{event.description}</p>
-                </div>
-            )}           
+            )}          
         </div>
     )
 }

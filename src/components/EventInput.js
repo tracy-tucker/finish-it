@@ -52,7 +52,7 @@ const EventInput = () => {
                         onChange={e => setFormData({...formData, description: e.target.value})}
                         value={formData.description}
                         type="text"
-                        id="descrption"
+                        id="description"
                         name="description"
                         placeholder="Enter event details here"
                         ></textarea>
