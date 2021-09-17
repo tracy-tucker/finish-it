@@ -23,14 +23,19 @@ const EventsRaw = () => {
 
         // useEffect cleanup function
         return () => subscriber();
-    }, [])
+    }, [events])
 
     if (loading) {
         return <h1>Loading data...</h1>
     }
 
-    const deleteEvent = (el) => {
-        console.log(el)
+    const deleteEvent = (event) => {
+        console.log(event)
+        db.collection('events').doc(event).delete().then(() =>{
+            console.log("Document successfully deleted!");
+        }).catch((error) => {
+            console.error("Error removing document: ", error)
+        })
     }
 
     return (
@@ -43,7 +48,8 @@ const EventsRaw = () => {
                     <h2>TITLE: {event.title}</h2>
                     <h3>DATE: {event.date}</h3>
                     <p>DETAILS: {event.description}</p>
-                    <button onClick={() => deleteEvent(event.key)}>EDIT EVENT</button> <br/>
+                    <button>EDIT EVENT</button> <br/>
+                    <button onClick={() => deleteEvent(event.key)}>DELETE EVENT</button>
                 </div>)
             ) : (
                 <h1>No Events Yet</h1>
