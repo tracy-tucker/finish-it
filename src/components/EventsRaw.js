@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Modal, Button, Alert } from 'react-bootstrap'
 import { db } from '../firebase/config'
 import { Link } from 'react-router-dom'
 
@@ -7,6 +8,9 @@ const EventsRaw = () => {
     // to set a loading message for the user
     const [loading, setLoading] = useState(true)
     const [events, setEvents] = useState([]);
+
+    const [showAlert, setShowAlert] = useState(false);
+    const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
         const getEventsFromFirebase = [];
@@ -31,6 +35,9 @@ const EventsRaw = () => {
         return <h1>Loading data...</h1>
     }
 
+    const handleShow = () => setShowModal(true)
+    const handleClose = () => setShowModal(false)
+
     const deleteEvent = (event) => {
         console.log(event)
         db.collection('events').doc(event).delete().then(() =>{
@@ -43,19 +50,23 @@ const EventsRaw = () => {
     return (
         <div className="EventsList">
             <h1>EVENTS</h1>
-            <button>ADD EVENT</button>
+            <Button onClick={handleShow} data-toggle="modal">ADD EVENT</Button>
             {events.length > 0 ? (
                 events.map(event =>
                 <div key={event.key}>
                     <h2>TITLE: {event.title}</h2>
                     <h3>DATE: {event.date}</h3>
                     <p>DETAILS: {event.description}</p>
-                    <button>EDIT EVENT</button> <br/>
-                    <button onClick={() => deleteEvent(event.key)}>DELETE EVENT</button>
+                    <Button>EDIT EVENT</Button> <br/>
+                    <Button onClick={() => deleteEvent(event.key)}>DELETE EVENT</Button>
                 </div>)
             ) : (
                 <h1>No Events Yet</h1>
-            )}            
+            )}
+
+            <Modal show={showModal}>
+                Testing?
+            </Modal>         
         </div>
     )
 }
