@@ -5,7 +5,11 @@ const EventsList = () => {
 
     // to set a loading message for the user
     const [loading, setLoading] = useState(true)
+    
     const [events, setEvents] = useState([]);
+
+    const [showAlert, setShowAlert] = useState(false);
+    const [show, setShow] = useState(false);
 
     useEffect(() => {
         const getEventsFromFirebase = [];
