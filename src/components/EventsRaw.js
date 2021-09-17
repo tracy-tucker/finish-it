@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { db } from '../firebase/config'
+import { Link } from 'react-router-dom'
 
-const EventsRaw = () => {
+const EventsRaw = ({ match }) => {
+    const { path } = match;
     // to set a loading message for the user
     const [loading, setLoading] = useState(true)
     const [events, setEvents] = useState([]);
@@ -41,7 +43,7 @@ const EventsRaw = () => {
     return (
         <div className="EventsList">
             <h1>EVENTS</h1>
-
+            <Link to={`${path}/add`}></Link>
             {events.length > 0 ? (
                 events.map(event =>
                 <div key={event.key}>
