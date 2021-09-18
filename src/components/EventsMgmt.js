@@ -1,5 +1,5 @@
 // import React, { useState, useEffect } from 'react'
-import React from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 // import { Modal, Button, Alert } from 'react-bootstrap'
 import EventsContext from '../context/EventsContext'
 // import { db } from '../firebase/config'
@@ -75,11 +75,12 @@ const EventsMgmt = () => {
 //     )
 // }
 
-return (
-    <>
-        <EventsContext />
-    </>
-)
+    return (
+        <div>
+            <h2>Manage Events</h2>
+            <EventsContext />
+        </div>
+    )
 }
 
 export default EventsMgmt
