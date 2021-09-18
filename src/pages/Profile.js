@@ -1,11 +1,11 @@
 import React from 'react'
-import EventsRaw from '../components/EventsRaw'
+import EventsMgmt from '../components/EventsMgmt'
 
 const Profile = () => {
     return (
         <div>
-            <p>Testing...PROFILE PAGE</p>
-            <EventsRaw />
+            <p>PROFILE PAGE</p>
+            <EventsMgmt />
         </div>
     )
 }
