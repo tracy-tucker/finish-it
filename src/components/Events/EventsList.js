@@ -3,13 +3,14 @@
 
 import React, { useContext } from 'react'
 import { EventContext } from '../../context/EventsContext'
+import Event from '/Event'
 
 const EventsList = () => {
     const {events} = useContext(EventContext);
 
     return (
         <div>
-            Testing
+            <Event />
         </div>
     )
 }
