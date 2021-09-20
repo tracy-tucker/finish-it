@@ -1,7 +1,9 @@
 // import React, { useState, useEffect } from 'react'
-import React, { useContext, useState, useEffect } from 'react'
+// import React, { useContext, useState, useEffect } from 'react'
 // import { Modal, Button, Alert } from 'react-bootstrap'
-import EventsContext from '../context/EventsContext'
+import React from 'react'
+import EventsList from '../EventsList'
+import EventContextProvider from '../../context/EventsContext'
 // import { db } from '../firebase/config'
 // import EventInput from './EventInput'
 // import { Link } from 'react-router-dom'
@@ -78,7 +80,9 @@ const EventsMgmt = () => {
     return (
         <div>
             <h2>Manage Events</h2>
-            <EventsContext />
+            <EventContextProvider>
+                <EventsList />
+            </EventContextProvider>
         </div>
     )
 }
