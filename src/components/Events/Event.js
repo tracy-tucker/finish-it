@@ -1,9 +1,12 @@
 import React from 'react'
 
-const Event = () => {
+const Event = ({event}) => {
+    
     return (
-        <div>
-            Employees go here
+        <div className="Event">
+            <h2>{event.title}</h2>
+            <h3>{event.date}</h3>
+            <p>{event.description}</p>
         </div>
     )
 }

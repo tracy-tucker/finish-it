@@ -2,7 +2,7 @@
 // import React, { useContext, useState, useEffect } from 'react'
 // import { Modal, Button, Alert } from 'react-bootstrap'
 import React from 'react'
-import EventsList from '../EventsList'
+import EventsList from './EventsList'
 import EventContextProvider from '../../context/EventsContext'
 // import { db } from '../firebase/config'
 // import EventInput from './EventInput'
@@ -78,7 +78,7 @@ const EventsMgmt = () => {
 // }
 
     return (
-        <div>
+        <div className="EventsMgmt">
             <h2>Manage Events</h2>
             <EventContextProvider>
                 <EventsList />

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { db } from '../../firebase/config'
-import '../components/styles.css'
+import '../styles.css'
 
 const EventInput = () => {
 

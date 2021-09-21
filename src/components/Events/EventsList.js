@@ -2,15 +2,24 @@
 // import { db } from '../firebase/config'
 
 import React, { useContext } from 'react'
+import Event from './Event'
 import { EventContext } from '../../context/EventsContext'
-import Event from '/Event'
 
 const EventsList = () => {
-    const {events} = useContext(EventContext);
+
+    const {events} = useContext(EventContext)
+    console.log(events)
 
     return (
-        <div>
-            <Event />
+        <div className="EventsList">
+            <ul>
+            {events.map(event => (
+                <li key={event.key}>
+                <Event event={event}/>
+                </li>
+            ))}
+            </ul>
+            This is the <strong>EVENTS LIST</strong> page
         </div>
     )
 }

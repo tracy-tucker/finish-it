@@ -78,3 +78,7 @@
   .EventsList h2 {
       color: blue;
   }
+
+  .EventsList li {
+      list-style: none;
+  }

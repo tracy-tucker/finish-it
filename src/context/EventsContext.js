@@ -25,7 +25,7 @@ const EventContextProvider = (props) => {
 
         // useEffect cleanup function
         return () => subscriber();
-    }, [events])
+    }, [])
 
     if (loading) {
         return <h1>Loading data...</h1>

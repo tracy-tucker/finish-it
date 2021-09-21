@@ -1,5 +1,5 @@
 import React from 'react'
-import EventsMgmt from '../components/EventsMgmt'
+import EventsMgmt from '../components/events/EventsMgmt'
 
 const Profile = () => {
     return (
