@@ -8,20 +8,18 @@ const AddEvent = () => {
                 <Form.Group>
                     <Form.Control
                         type="text"
-                        placholder="Title *"
+                        placeholder="Title *"
                         required
                     >
                     </Form.Control>
                     <Form.Control
                         type="date"
-                        placholder="Date *"
                         required
                     >
                     </Form.Control>
                     <Form.Control
-                        as="texareat"
-                        placholder="Description *"
-                        required
+                        as="textarea"
+                        placeholder="Description"
                         rows={3}
                     >
                     </Form.Control>

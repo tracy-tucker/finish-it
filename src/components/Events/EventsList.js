@@ -1,25 +1,50 @@
 // import React, { useState, useEffect } from 'react'
 // import { db } from '../firebase/config'
 
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import Event from './Event'
+import AddEvent from './AddEvent'
 import { EventContext } from '../../context/EventsContext'
+import { Modal, Button } from 'react-bootstrap'
 
 const EventsList = () => {
 
     const {events} = useContext(EventContext)
-    console.log(events)
+    const [show, setShow] = useState(false)
+
+    const handleShow = () => setShow(true)
+    const handleClose = () => setShow(false)
 
     return (
         <div className="EventsList">
+            <div>
+                <Button onClick={handleShow} className="btn btn-success" data-toggle="modal">Add New Event</Button>
+            </div>
+            <div>
             <ul>
-            {events.map(event => (
-                <li key={event.key}>
-                <Event event={event}/>
-                </li>
-            ))}
+                {events.map(event => (
+                    <li key={event.key}>
+                    <Event event={event}/>
+                    </li>
+                ))}
             </ul>
-            This is the <strong>EVENTS LIST</strong> page
+            </div>
+            
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header>
+                    <Modal.Title>
+                        Add Event
+                    </Modal.Title>
+                </Modal.Header>
+                    <Modal.Body>
+                        <AddEvent />
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="secondary" onClick={handleClose}>
+                            Close
+                        </Button>
+                    </Modal.Footer>
+            </Modal>
         </div>
     )
 }
