@@ -40,6 +40,7 @@ const EventContextProvider = (props) => {
         .catch((error) => {
             console.error("Error writing document: ", error)
         })
+        setEvents([...events, event])
         console.log(events)
 
         // const elementsArray = [...event.target.elements];
