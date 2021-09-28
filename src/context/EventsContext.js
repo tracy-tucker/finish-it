@@ -31,8 +31,44 @@ const EventContextProvider = (props) => {
         return <h1>Loading data...</h1>
     }
 
+    const addEvent = (event) => {
+        db.collection('events').add(event)
+        .then(() => {
+            console.log("Document successfully written!")
+        })
+        .catch((error) => {
+            console.error("Error writing document: ", error)
+        })
+
+        // const elementsArray = [...event.target.elements];
+
+        // const formData = elementsArray.reduce((accumulator, currentValue) => {
+        //     if (currentValue.id) {
+        //         accumulator[currentValue.id] = currentValue.value;
+        //     }
+        //     return accumulator
+        // }, {});
+        // db.collection('events').add(formData);
+        // console.log(formData);
+    }
+    
+    // const saveEvent = (event) => {
+    //     event.preventDefault();
+        
+    //     const elementsArray = [...event.target.elements];
+
+    //     const formData = elementsArray.reduce((accumulator, currentValue) => {
+    //         if (currentValue.id) {
+    //             accumulator[currentValue.id] = currentValue.value;
+    //         }
+    //         return accumulator
+    //     }, {});
+    //     db.collection('events').add(formData);
+    //     console.log(formData);
+    // }
+
     return (
-        <EventContext.Provider value={{events}}>
+        <EventContext.Provider value={{events, addEvent}}>
             {props.children}
         </EventContext.Provider>
     )

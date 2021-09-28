@@ -3,7 +3,7 @@
 
 import React, { useContext, useState } from 'react'
 import Event from './Event'
-import AddEvent from './AddEvent'
+import AddForm from './AddForm'
 import { EventContext } from '../../context/EventsContext'
 import { Modal, Button } from 'react-bootstrap'
 
@@ -30,14 +30,14 @@ const EventsList = () => {
             </ul>
             </div>
             
-            <Modal show={show} onHide={handleClose}>
+            <Modal show={show} onHide={handleClose} animation={false}>
                 <Modal.Header>
                     <Modal.Title>
                         Add Event
                     </Modal.Title>
                 </Modal.Header>
                     <Modal.Body>
-                        <AddEvent />
+                        <AddForm />
                     </Modal.Body>
                     <Modal.Footer>
                         <Button variant="secondary" onClick={handleClose}>
