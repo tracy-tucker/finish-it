@@ -7,6 +7,7 @@ const EventContextProvider = (props) => {
     
     const [loading, setLoading] = useState(true)
     const [events, setEvents] = useState([]);
+    // const [newEvents, setNewEvents] = useState(...events)
     
     useEffect(() => {
         const getEventsFromFirebase = [];
@@ -39,6 +40,7 @@ const EventContextProvider = (props) => {
         .catch((error) => {
             console.error("Error writing document: ", error)
         })
+        console.log(events)
 
         // const elementsArray = [...event.target.elements];
 
