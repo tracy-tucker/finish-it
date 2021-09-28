@@ -26,7 +26,7 @@ const EventContextProvider = (props) => {
 
         // useEffect cleanup function
         return () => subscriber();
-    }, [])
+    }, [events])
 
     if (loading) {
         return <h1>Loading data...</h1>
@@ -36,11 +36,12 @@ const EventContextProvider = (props) => {
         db.collection('events').add(event)
         .then(() => {
             console.log("Document successfully written!")
+            setEvents([...events, event])
         })
         .catch((error) => {
             console.error("Error writing document: ", error)
         })
-        setEvents([...events, event])
+        
         console.log(events)
 
         // const elementsArray = [...event.target.elements];
