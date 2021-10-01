@@ -1,14 +1,19 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 
 const Event = ({event}) => {
+    const {key, title, date, description} = event
+    console.log("I am inside the Event comp")
+
+    return useMemo(() => {
+        return (
+            <div className="Event" key={key}>
+                <h2>{title}</h2>
+                <h3>{date}</h3>
+                <p>{description}</p>
+            </div>
+        )
+    }, [key, title, date, description])
     
-    return (
-        <div className="Event">
-            <h2>{event.title}</h2>
-            <h3>{event.date}</h3>
-            <p>{event.description}</p>
-        </div>
-    )
 }
 
 export default Event

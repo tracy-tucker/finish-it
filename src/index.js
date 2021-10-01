@@ -7,12 +7,12 @@ import { firebase } from './firebase/config'
 import { ProvideAuth } from './context/AuthContext';
 
 ReactDOM.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <FirebaseContext.Provider value={{firebase}}>
       <ProvideAuth>
         <App />
       </ProvideAuth>
-    </FirebaseContext.Provider>
-  </React.StrictMode>,
+    </FirebaseContext.Provider>,
+  // </React.StrictMode>,
   document.getElementById('root')
 );

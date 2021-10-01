@@ -1,7 +1,7 @@
 // import React, { useState, useEffect } from 'react'
 // import { db } from '../firebase/config'
 
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import Event from './Event'
 import AddForm from './AddForm'
 import { EventContext } from '../../context/EventsContext'
@@ -10,10 +10,18 @@ import { Modal, Button } from 'react-bootstrap'
 const EventsList = () => {
 
     const {events} = useContext(EventContext)
+    console.log("I am after useContext")
     const [show, setShow] = useState(false)
 
     const handleShow = () => setShow(true)
     const handleClose = () => setShow(false)
+
+    //handleClose not working
+    useEffect(() => {
+        handleClose()
+    }, [])
+
+    console.log("I am about to pass events")
 
     return (
         <div className="EventsList">
@@ -27,6 +35,7 @@ const EventsList = () => {
                     <Event event={event}/>
                     </li>
                 ))}
+                {/* <li>{events.title}</li> */}
             </ul>
             </div>
             

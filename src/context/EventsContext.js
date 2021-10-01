@@ -9,7 +9,18 @@ const EventContextProvider = (props) => {
     const [events, setEvents] = useState([]);
     // const [newEvents, setNewEvents] = useState(...events)
     
+    // useEffect(() => {
+    //     const subscriber = db
+    //     .collection('events').onSnapshot(querySnapshot => {
+    //         setEvents(querySnapshot.docs.map(doc => doc.data()))
+    //     })
+    //     setLoading(false)
+    //     return () => subscriber()
+        
+    // }, [])
+
     useEffect(() => {
+        console.log("I am before the Firestore fetch")
         const getEventsFromFirebase = [];
         const subscriber = db
             .collection('events')
@@ -22,11 +33,16 @@ const EventContextProvider = (props) => {
             })
             setEvents(getEventsFromFirebase)
             setLoading(false)
+            console.log("I am after the Firestore Fetch, inside UseEffect")
         })
 
         // useEffect cleanup function
         return () => subscriber();
-    }, [events])
+    }, [])
+
+    console.log("I am right outside useEffect", events)
+
+    // removed event. was eating up firestore data
 
     if (loading) {
         return <h1>Loading data...</h1>
@@ -36,13 +52,14 @@ const EventContextProvider = (props) => {
         db.collection('events').add(event)
         .then(() => {
             console.log("Document successfully written!")
-            setEvents([...events, event])
+            // setEvents(events => [...events, event])
+            console.log("am I working?")
         })
         .catch((error) => {
             console.error("Error writing document: ", error)
         })
         
-        console.log(events)
+        // console.log(events)
 
         // const elementsArray = [...event.target.elements];
 
