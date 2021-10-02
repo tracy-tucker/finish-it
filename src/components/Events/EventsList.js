@@ -31,7 +31,7 @@ const EventsList = () => {
             <div>
             <ul>
                 {events.map(event => (
-                    <li key={event.key}>
+                    <li key={event.id}>
                     <Event event={event}/>
                     </li>
                 ))}
