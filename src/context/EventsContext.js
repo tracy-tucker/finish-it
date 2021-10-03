@@ -21,24 +21,26 @@ const EventContextProvider = (props) => {
 
     useEffect(() => {
         console.log("I am before the Firestore fetch")
-        const getEventsFromFirebase = [];
-        const subscriber = db
-            .collection('events')
-            .onSnapshot((querySnapshot) => {
-            querySnapshot.forEach(doc => {
-                getEventsFromFirebase.push({
-                    ...doc.data(),
-                    key: doc.id,
+        if (events.length === 0) {
+            const getEventsFromFirebase = [];
+            const subscriber = db
+                .collection('events')
+                .onSnapshot((querySnapshot) => {
+                querySnapshot.forEach(doc => {
+                    getEventsFromFirebase.push({
+                        ...doc.data(),
+                        key: doc.id,
+                    })
                 })
+                setEvents(getEventsFromFirebase)
+                setLoading(false)
+                console.log("I am after the Firestore Fetch, inside UseEffect")
             })
-            setEvents(getEventsFromFirebase)
-            setLoading(false)
-            console.log("I am after the Firestore Fetch, inside UseEffect")
-        })
 
-        // useEffect cleanup function
-        return () => subscriber();
-    }, [])
+            // useEffect cleanup function
+            return () => subscriber();
+        }
+    }, [events])
 
     console.log("I am right outside useEffect", events)
 
