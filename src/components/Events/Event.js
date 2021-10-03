@@ -6,7 +6,7 @@ const Event = React.memo(({event}) => {
 
     // return useMemo(() => {
         return (
-            <div className="Event" key={event.key}>
+            <div className="Event" key={event.id}>
                 <h2>{event.title}</h2>
                 <h3>{event.date}</h3>
                 <p>{event.description}</p>

@@ -9,6 +9,18 @@ const EventContextProvider = (props) => {
     const [events, setEvents] = useState([]);
     // const [newEvents, setNewEvents] = useState(...events)
     
+    useEffect(() => {
+        const subscriber = db
+        .collection('events').onSnapshot(querySnapshot => {
+            setEvents(querySnapshot.docs.map((doc) => ({
+                id: doc.id,
+                ...doc.data()
+            }))) // end setEvents
+        }) // END collection call
+        setLoading(false)
+        return () => subscriber()
+    }, []) // END useEffect
+    
     // useEffect(() => {
     //     const subscriber = db
     //     .collection('events').onSnapshot(querySnapshot => {
@@ -19,28 +31,28 @@ const EventContextProvider = (props) => {
         
     // }, [])
 
-    useEffect(() => {
-        console.log("I am before the Firestore fetch")
-        if (events.length === 0) {
-            const getEventsFromFirebase = [];
-            const subscriber = db
-                .collection('events')
-                .onSnapshot((querySnapshot) => {
-                querySnapshot.forEach(doc => {
-                    getEventsFromFirebase.push({
-                        ...doc.data(),
-                        key: doc.id,
-                    })
-                })
-                setEvents(getEventsFromFirebase)
-                setLoading(false)
-                console.log("I am after the Firestore Fetch, inside UseEffect")
-            })
+    // useEffect(() => {
+    //     console.log("I am before the Firestore fetch")
+    //     // if (events.length === 0) {
+    //         const getEventsFromFirebase = [];
+    //         const subscriber = db
+    //             .collection('events')
+    //             .onSnapshot((querySnapshot) => {
+    //             querySnapshot.forEach(doc => {
+    //                 getEventsFromFirebase.push({
+    //                     ...doc.data(),
+    //                     key: doc.id,
+    //                 })
+    //             })
+    //             setEvents(getEventsFromFirebase)
+    //             setLoading(false)
+    //             console.log("I am after the Firestore Fetch, inside UseEffect")
+    //         })
 
-            // useEffect cleanup function
-            return () => subscriber();
-        }
-    }, [events])
+    //         // useEffect cleanup function
+    //         return () => subscriber();
+    //     // }
+    // }, [])
 
     console.log("I am right outside useEffect", events)
 
@@ -55,6 +67,7 @@ const EventContextProvider = (props) => {
         .then(() => {
             console.log("Document successfully written!")
             // setEvents(events => [...events, event])
+            // setEvents([...events])
             console.log("am I working?")
         })
         .catch((error) => {
