@@ -21,42 +21,8 @@ const EventContextProvider = (props) => {
         return () => subscriber()
     }, []) // END useEffect
     
-    // useEffect(() => {
-    //     const subscriber = db
-    //     .collection('events').onSnapshot(querySnapshot => {
-    //         setEvents(querySnapshot.docs.map(doc => doc.data()))
-    //     })
-    //     setLoading(false)
-    //     return () => subscriber()
-        
-    // }, [])
-
-    // useEffect(() => {
-    //     console.log("I am before the Firestore fetch")
-    //     // if (events.length === 0) {
-    //         const getEventsFromFirebase = [];
-    //         const subscriber = db
-    //             .collection('events')
-    //             .onSnapshot((querySnapshot) => {
-    //             querySnapshot.forEach(doc => {
-    //                 getEventsFromFirebase.push({
-    //                     ...doc.data(),
-    //                     key: doc.id,
-    //                 })
-    //             })
-    //             setEvents(getEventsFromFirebase)
-    //             setLoading(false)
-    //             console.log("I am after the Firestore Fetch, inside UseEffect")
-    //         })
-
-    //         // useEffect cleanup function
-    //         return () => subscriber();
-    //     // }
-    // }, [])
-
     console.log("I am right outside useEffect", events)
 
-    // removed event. was eating up firestore data
 
     if (loading) {
         return <h1>Loading data...</h1>
@@ -68,7 +34,6 @@ const EventContextProvider = (props) => {
             console.log("Document successfully written!")
             // setEvents(events => [...events, event])
             // setEvents([...events])
-            console.log("am I working?")
         })
         .catch((error) => {
             console.error("Error writing document: ", error)

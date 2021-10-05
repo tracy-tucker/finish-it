@@ -19,7 +19,8 @@ const EventsList = () => {
     //handleClose not working
     useEffect(() => {
         handleClose()
-    }, [])
+    }, [events])
+    // [events] added so that the effect fires when events change
 
     console.log("I am about to pass events")
 
@@ -35,7 +36,6 @@ const EventsList = () => {
                     <Event event={event}/>
                     </li>
                 ))}
-                {/* <li>{events.title}</li> */}
             </ul>
             </div>
             
