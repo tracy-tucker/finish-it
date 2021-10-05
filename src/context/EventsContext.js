@@ -38,9 +38,13 @@ const EventContextProvider = (props) => {
             console.error("Error writing document: ", error)
         })   
     }
+
+    const deleteEvent = (id) => {
+        db.collection('events').doc(id).delete()
+    }
     
     return (
-        <EventContext.Provider value={{events, addEvent}}>
+        <EventContext.Provider value={{events, addEvent, deleteEvent}}>
             {props.children}
         </EventContext.Provider>
     )
