@@ -5,37 +5,35 @@ import { EventContext } from '../../context/EventsContext'
 
 const EditForm = () => {
 
-    const {addEvent} = useContext(EventContext)
+    const {updateEvent} = useContext(EventContext)
 
+    // THIS NEEDS TO CHANGE!
     const [formData, setFormData] = useState({
         title: "",
         date: "",
         description: ""
     })
 
+    // IS THIS CHANGING ALSO?
     const saveEvent = (e) => {
         e.preventDefault();
-        addEvent(formData)
+        updateEvent(formData)
     }
 
     return (
         <>
-            <Form onSubmit={saveEvent}>
+            <Form>
                 <Form.Group>
                     <Form.Control
                         type="text"
                         placeholder="Title *"
                         name="title"
-                        value={formData.title}
-                        onChange={e => setFormData({...formData, title: e.target.value})}
                         required
                     >
                     </Form.Control>
                     <Form.Control
                         type="date"
                         name="date"
-                        value={formData.date}
-                        onChange={e => setFormData({...formData, date: e.target.value})}
                         required
                     >
                     </Form.Control>
@@ -43,14 +41,12 @@ const EditForm = () => {
                         as="textarea"
                         placeholder="Description"
                         name="description"
-                        value={formData.description}
-                        onChange={e => setFormData({...formData, description: e.target.value})}
                         rows={3}
                     >
                     </Form.Control>
                 </Form.Group>
                 <Button variant="success" type="submit" block>
-                    Add Event
+                    Update Event
                 </Button>
             </Form>
         </>

@@ -1,13 +1,18 @@
-import React, { useContext } from 'react'
-import { Button } from 'react-bootstrap'
+import React, { useContext, useState } from 'react'
+import { Button, Modal } from 'react-bootstrap'
 import { EventContext } from '../../context/EventsContext'
+import EditForm from './EditForm'
 
 const Event = React.memo(({event}) => {
     // const {key, title, date, description} = event
     console.log("I am inside the Event comp")
 
     const {deleteEvent} = useContext(EventContext)
-    const {updateEvent} = useContext(EventContext)
+
+    const [show, setShow] = useState(false)
+
+    const handleShow = () => setShow(true)
+    const handleClose = () => setShow(false)
 
     return (
         <div className="Event" key={event.id}>
@@ -15,7 +20,23 @@ const Event = React.memo(({event}) => {
             <h3>{event.date}</h3>
             <p>{event.description}</p>
             <Button onClick={() => deleteEvent(event.id)} className="btn btn-danger">DELETE</Button>
-            <Button onClick={() => updateEvent(event.id)} className="btn btn-primary">EDIT</Button>
+            <Button onClick={handleShow} className="btn btn-primary">EDIT</Button>
+
+            <Modal show={show} onHide={handleClose} animation={false}>
+            <Modal.Header>
+                <Modal.Title>
+                    Edit Event
+                </Modal.Title>
+            </Modal.Header>
+                <Modal.Body>
+                    <EditForm />
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>
+                        Close
+                    </Button>
+                </Modal.Footer>
+            </Modal>
         </div>
     ) 
 })
