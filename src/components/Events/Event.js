@@ -7,6 +7,7 @@ const Event = React.memo(({event}) => {
     console.log("I am inside the Event comp")
 
     const {deleteEvent} = useContext(EventContext)
+    const {updateEvent} = useContext(EventContext)
 
     return (
         <div className="Event" key={event.id}>
@@ -14,7 +15,7 @@ const Event = React.memo(({event}) => {
             <h3>{event.date}</h3>
             <p>{event.description}</p>
             <Button onClick={() => deleteEvent(event.id)} className="btn btn-danger">DELETE</Button>
-            <Button className="btn btn-primary">EDIT</Button>
+            <Button onClick={() => updateEvent(event.id)} className="btn btn-primary">EDIT</Button>
         </div>
     ) 
 })
