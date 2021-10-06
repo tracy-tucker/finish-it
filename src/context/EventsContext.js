@@ -43,11 +43,13 @@ const EventContextProvider = (props) => {
         db.collection('events').doc(id).delete()
     }
     
-    const updateEvent = (id) => {
+    const updateEvent = (id, updatedEvent) => {
+        db.collection('events').doc(id).update({
+            title: updatedEvent.title,
+            date: updatedEvent.date,
+            description: updatedEvent.description
+        })
         console.log(id, "I AM THE UPDATE")
-        // db.collection('events').doc(id).update({
-        //     //
-        // })
     }
 
     return (

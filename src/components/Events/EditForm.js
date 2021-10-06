@@ -3,37 +3,45 @@ import { Form, Button } from 'react-bootstrap'
 import { EventContext } from '../../context/EventsContext'
 
 
-const EditForm = () => {
+const EditForm = ({chosenEvent}) => {
+
+    const id = chosenEvent.id
+
+    console.log("I AM CHOSEN", chosenEvent)
 
     const {updateEvent} = useContext(EventContext)
 
     // THIS NEEDS TO CHANGE!
-    const [formData, setFormData] = useState({
-        title: "",
-        date: "",
-        description: ""
+    const [updatedEvent, setUpdatedEvent] = useState({
+        title: chosenEvent.title,
+        date: chosenEvent.date,
+        description: chosenEvent.description
     })
 
     // IS THIS CHANGING ALSO?
     const saveEvent = (e) => {
         e.preventDefault();
-        updateEvent(formData)
+        updateEvent(id, updatedEvent)
     }
 
     return (
         <>
-            <Form>
+            <Form onSubmit={saveEvent}>
                 <Form.Group>
                     <Form.Control
                         type="text"
                         placeholder="Title *"
                         name="title"
+                        value={updatedEvent.title}
+                        onChange={(e) => setUpdatedEvent({...updatedEvent, title: e.target.value})}
                         required
                     >
                     </Form.Control>
                     <Form.Control
                         type="date"
                         name="date"
+                        value={updatedEvent.date}
+                        onChange={(e) => setUpdatedEvent({...updatedEvent, date: e.target.value})}
                         required
                     >
                     </Form.Control>
@@ -41,6 +49,8 @@ const EditForm = () => {
                         as="textarea"
                         placeholder="Description"
                         name="description"
+                        value={updatedEvent.description}
+                        onChange={(e) => setUpdatedEvent({...updatedEvent, description: e.target.value})}
                         rows={3}
                     >
                     </Form.Control>

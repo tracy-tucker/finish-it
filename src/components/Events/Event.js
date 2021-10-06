@@ -29,7 +29,7 @@ const Event = React.memo(({event}) => {
                 </Modal.Title>
             </Modal.Header>
                 <Modal.Body>
-                    <EditForm />
+                    <EditForm chosenEvent={event} />
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
