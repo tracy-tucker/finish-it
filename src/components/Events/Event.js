@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { Button, Modal } from 'react-bootstrap'
 import { EventContext } from '../../context/EventsContext'
 import EditForm from './EditForm'
@@ -13,6 +13,12 @@ const Event = React.memo(({event}) => {
 
     const handleShow = () => setShow(true)
     const handleClose = () => setShow(false)
+
+    // Closes modal on Add Event action
+    useEffect(() => {
+        handleClose()
+    }, [event])
+    // [events] added so that the effect fires when events change
 
     return (
         <div className="Event" key={event.id}>

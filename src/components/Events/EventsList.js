@@ -28,11 +28,13 @@ const EventsList = () => {
             </div>
             <div>
             <ul>
-                {events.map(event => (
-                    <li key={event.id}>
-                    <Event event={event}/>
-                    </li>
-                ))}
+                {
+                    events.sort((a, b) => (a.date < b.date ? -1 : 1)).map(event => (
+                        <li key={event.id}>
+                        <Event event={event}/>
+                        </li>
+                    ))
+                }
             </ul>
             </div>
             

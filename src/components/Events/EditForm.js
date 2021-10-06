@@ -11,14 +11,12 @@ const EditForm = ({chosenEvent}) => {
 
     const {updateEvent} = useContext(EventContext)
 
-    // THIS NEEDS TO CHANGE!
     const [updatedEvent, setUpdatedEvent] = useState({
         title: chosenEvent.title,
         date: chosenEvent.date,
         description: chosenEvent.description
     })
 
-    // IS THIS CHANGING ALSO?
     const saveEvent = (e) => {
         e.preventDefault();
         updateEvent(id, updatedEvent)
