@@ -2,20 +2,29 @@ import React, { useContext, useState, useEffect } from 'react'
 import Event from './Event'
 import AddForm from './AddForm'
 import { EventContext } from '../../context/EventsContext'
-import { Modal, Button } from 'react-bootstrap'
+import { Modal, Button, Alert } from 'react-bootstrap'
 
 const EventsList = () => {
 
     const {events} = useContext(EventContext)
     console.log("I am after useContext")
+
+    const [showAlert, setShowAlert] = useState(false)
     const [show, setShow] = useState(false)
 
     const handleShow = () => setShow(true)
     const handleClose = () => setShow(false)
+    const handleShowAlert = () => setShowAlert(true)
 
     // Closes modal on Add Event action
+    // Triggers Alert on modal close
     useEffect(() => {
         handleClose()
+
+        return () => {
+            handleShowAlert()
+            console.log("Is alert firing?")
+        }
     }, [events])
     // [events] added so that the effect fires when events change
 
@@ -26,6 +35,11 @@ const EventsList = () => {
             <div>
                 <Button onClick={handleShow} className="btn btn-success" data-toggle="modal">Add New Event</Button>
             </div>
+
+            <Alert show={showAlert} variant="success" onClose={() => setShowAlert(false)} dismissable>
+                Event list updated successfully
+            </Alert>
+
             <div>
             <ul>
                 {
@@ -53,6 +67,7 @@ const EventsList = () => {
                         </Button>
                     </Modal.Footer>
             </Modal>
+
         </div>
     )
 }
