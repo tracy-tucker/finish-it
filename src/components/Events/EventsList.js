@@ -14,7 +14,14 @@ const EventsList = () => {
 
     const handleShow = () => setShow(true)
     const handleClose = () => setShow(false)
-    const handleShowAlert = () => setShowAlert(true)
+    // const handleShowAlert = () => setShowAlert(true)
+
+    const handleShowAlert = () => {
+        setShowAlert(true);
+        setTimeout(() => {
+            setShowAlert(false)
+        }, 2000)
+    }
 
     // Closes modal on Add Event action
     // Triggers Alert on modal close
@@ -36,7 +43,7 @@ const EventsList = () => {
                 <Button onClick={handleShow} className="btn btn-success" data-toggle="modal">Add New Event</Button>
             </div>
 
-            <Alert show={showAlert} variant="success" onClose={() => setShowAlert(false)} dismissable>
+            <Alert className="Alert" show={showAlert} variant="success" dismissible>
                 Event list updated successfully
             </Alert>
 
@@ -53,7 +60,7 @@ const EventsList = () => {
             </div>
             
             <Modal show={show} onHide={handleClose} animation={false}>
-                <Modal.Header>
+                <Modal.Header closeButton>
                     <Modal.Title>
                         Add Event
                     </Modal.Title>

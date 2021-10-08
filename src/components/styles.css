@@ -82,3 +82,11 @@
   .EventsList li {
       list-style: none;
   }
+
+  .Alert {
+      margin: 10px;
+  }
+
+  .Alert .btn-close {
+      margin: 0;
+  }
