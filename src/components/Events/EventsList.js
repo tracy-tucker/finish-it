@@ -48,7 +48,7 @@ const EventsList = () => {
             </Alert>
 
             <div>
-            <ul>
+            <ul className="EventItems">
                 {
                     events.sort((a, b) => (a.date < b.date ? -1 : 1)).map(event => (
                         <li key={event.id}>

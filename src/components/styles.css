@@ -72,15 +72,34 @@
   .EventsList {
       max-width: 90%;
       margin: 0 auto;
-      margin-bottom: 2rem;
+      /* margin-bottom: 2rem; */
   }
 
-  .EventsList h2 {
-      color: blue;
+  .Event h2 {
+      color:#2d2d2d;
+  }
+
+  .Event h3 {
+      color: gray;
+      font-size: 1.25rem;
+  }
+
+  .Event Button {
+      margin: 5px;
   }
 
   .EventsList li {
       list-style: none;
+      max-width: 60%;
+      padding: 20px;
+      margin: 1.5rem;
+      border: 1px solid #EEE;
+      border-radius: 5px;
+      box-shadow: 6px 4px 26px -8px rgba(26,25,26,1);
+  }
+
+  .EventItems {
+      padding: 1rem;
   }
 
   .Alert {

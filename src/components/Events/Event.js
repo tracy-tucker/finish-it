@@ -23,10 +23,12 @@ const Event = React.memo(({event}) => {
     return (
         <div className="Event" key={event.id}>
             <h2>{event.title}</h2>
-            <h3>{event.date}</h3>
+            <h3>DATE: {event.date}</h3>
+            <hr/>
             <p>{event.description}</p>
             <Button onClick={() => deleteEvent(event.id)} className="btn btn-danger">DELETE</Button>
             <Button onClick={handleShow} className="btn btn-primary">EDIT</Button>
+
 
             <Modal show={show} onHide={handleClose} animation={false}>
             <Modal.Header>
