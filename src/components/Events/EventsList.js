@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react'
 import Event from './Event'
 import AddForm from './AddForm'
+import Pagination from '../Pagination'
 import { EventContext } from '../../context/EventsContext'
 import { Modal, Button, Alert } from 'react-bootstrap'
 
@@ -58,6 +59,8 @@ const EventsList = () => {
                 }
             </ul>
             </div>
+
+            <Pagination />
             
             <Modal show={show} onHide={handleClose} animation={false}>
                 <Modal.Header closeButton>
