@@ -60,8 +60,8 @@ const EventsList = () => {
                 </ul>
             </div>
 
-            <PageCount />
-            
+            <PageCount className="PageCount" />
+
             <Modal show={show} onHide={handleClose} animation={false}>
                 <Modal.Header closeButton>
                     <Modal.Title>
