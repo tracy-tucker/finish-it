@@ -10,7 +10,9 @@ const EventsList = () => {
     const {events} = useContext(EventContext)
     console.log("I am after useContext")
 
+    // Alert Comp
     const [showAlert, setShowAlert] = useState(false)
+    // Modal Comp
     const [show, setShow] = useState(false)
 
     const handleShow = () => setShow(true)
@@ -38,6 +40,15 @@ const EventsList = () => {
 
     console.log("I am about to pass events")
 
+    // PageCount Comp
+    const [currentPage, setCurrentPage] = useState(1)
+    const [eventsPerPage] = useState(1)
+
+    const indexOfLastEvent = currentPage * eventsPerPage
+    const indexOfFirstEvent = indexOfLastEvent - eventsPerPage
+    const currentEvent = events.slice(indexOfFirstEvent, indexOfLastEvent)
+    const totalPagesNum = Math.ceil(events.length / eventsPerPage)
+
     return (
         <div className="EventsList">
             <div>
@@ -51,7 +62,7 @@ const EventsList = () => {
             <div>
                 <ul className="EventItems">
                     {
-                        events.sort((a, b) => (a.date < b.date ? -1 : 1)).map(event => (
+                        currentEvent.sort((a, b) => (a.date < b.date ? -1 : 1)).map(event => (
                             <li key={event.id}>
                             <Event event={event}/>
                             </li>
@@ -60,7 +71,11 @@ const EventsList = () => {
                 </ul>
             </div>
 
-            <PageCount className="PageCount" />
+            <PageCount className="PageCount"
+                pages={totalPagesNum}
+                setCurrentPage={setCurrentPage}
+                currentEvent={events}
+            />
 
             <Modal show={show} onHide={handleClose} animation={false}>
                 <Modal.Header closeButton>

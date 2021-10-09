@@ -1,7 +1,7 @@
 import React from 'react'
 import { Pagination } from 'react-bootstrap'
 
-const PageCount = () => {
+const PageCount = ({pages, setCurrentPage, currentEvent}) => {
     return (
         <Pagination size="sm">
             <Pagination.Prev />
