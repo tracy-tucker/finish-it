@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react'
 import Event from './Event'
 import AddForm from './AddForm'
-import Pagination from '../Pagination'
+import PageCount from '../PageCount'
 import { EventContext } from '../../context/EventsContext'
 import { Modal, Button, Alert } from 'react-bootstrap'
 
@@ -49,18 +49,18 @@ const EventsList = () => {
             </Alert>
 
             <div>
-            <ul className="EventItems">
-                {
-                    events.sort((a, b) => (a.date < b.date ? -1 : 1)).map(event => (
-                        <li key={event.id}>
-                        <Event event={event}/>
-                        </li>
-                    ))
-                }
-            </ul>
+                <ul className="EventItems">
+                    {
+                        events.sort((a, b) => (a.date < b.date ? -1 : 1)).map(event => (
+                            <li key={event.id}>
+                            <Event event={event}/>
+                            </li>
+                        ))
+                    }
+                </ul>
             </div>
 
-            <Pagination />
+            <PageCount />
             
             <Modal show={show} onHide={handleClose} animation={false}>
                 <Modal.Header closeButton>
