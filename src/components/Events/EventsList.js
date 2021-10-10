@@ -47,7 +47,8 @@ const EventsList = () => {
     const indexOfLastEvent = currentPage * eventsPerPage
     const indexOfFirstEvent = indexOfLastEvent - eventsPerPage
     const currentEvent = events.slice(indexOfFirstEvent, indexOfLastEvent)
-    const totalPagesNum = Math.ceil(events.length / eventsPerPage)
+    const totalEvents = Math.ceil(events.length / eventsPerPage)
+    const paginate = pageNumber => setCurrentPage(pageNumber)
 
     return (
         <div className="EventsList">
@@ -72,9 +73,9 @@ const EventsList = () => {
             </div>
 
             <PageCount className="PageCount"
-                pages={totalPagesNum}
-                setCurrentPage={setCurrentPage}
-                currentEvent={events}
+                eventsPerPage = {eventsPerPage}
+                totalEvents = {totalEvents}
+                paginate = {paginate}
             />
 
             <Modal show={show} onHide={handleClose} animation={false}>
