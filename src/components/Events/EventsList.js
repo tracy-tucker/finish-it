@@ -51,32 +51,37 @@ const EventsList = () => {
     const paginate = pageNumber => setCurrentPage(pageNumber)
 
     return (
-        <div className="EventsList">
-            <div>
-                <Button onClick={handleShow} className="btn btn-success" data-toggle="modal">Add New Event</Button>
+        <>
+            <div className="EventsList">
+                <div>
+                    <Button onClick={handleShow} className="btn btn-success" data-toggle="modal">Add New Event</Button>
+                </div>
+
+                <Alert className="Alert" show={showAlert} variant="success" dismissible>
+                    Event list updated successfully
+                </Alert>
+
+                <div>
+                    <ul className="EventItems">
+                        {
+                            currentEvent.sort((a, b) => (a.date < b.date ? -1 : 1)).map(event => (
+                                <li key={event.id}>
+                                <Event event={event}/>
+                                </li>
+                            ))
+                        }
+                    </ul>
+                </div>
+                <div>
+                    <PageCount className="PageCount"
+                        eventsPerPage = {eventsPerPage}
+                        totalEvents = {totalEvents}
+                        paginate = {paginate}
+                    />
+                </div>
             </div>
 
-            <Alert className="Alert" show={showAlert} variant="success" dismissible>
-                Event list updated successfully
-            </Alert>
-
-            <div>
-                <ul className="EventItems">
-                    {
-                        currentEvent.sort((a, b) => (a.date < b.date ? -1 : 1)).map(event => (
-                            <li key={event.id}>
-                            <Event event={event}/>
-                            </li>
-                        ))
-                    }
-                </ul>
-            </div>
-
-            <PageCount className="PageCount"
-                eventsPerPage = {eventsPerPage}
-                totalEvents = {totalEvents}
-                paginate = {paginate}
-            />
+            
 
             <Modal show={show} onHide={handleClose} animation={false}>
                 <Modal.Header closeButton>
@@ -94,7 +99,7 @@ const EventsList = () => {
                     </Modal.Footer>
             </Modal>
 
-        </div>
+        </>
     )
 }
 
