@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom'
 import * as ROUTES from './constants/routes'
 import Hero from './components/Hero'
-import Navbar from './components/Navbar'
+import Navigation from './components/Navigation'
 import SignUp from './pages/SignUp'
 import Home from './pages/Home'
 import Login from './pages/Login'
@@ -23,7 +23,7 @@ function App() {
       <h1>Loading...</h1>
     ) : (
       <Router>
-        <Navbar />
+        <Navigation />
         <Hero />
         <Switch>
           <Route exact path={ROUTES.HOME} component={Home} />

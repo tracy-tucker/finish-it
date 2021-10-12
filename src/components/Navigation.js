@@ -1,14 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { Navbar, Container, Nav } from 'react-bootstrap'
 import './styles.css'
 import * as ROUTES from '../constants/routes'
 import { useAuth } from '../context/AuthContext'
 
-function Navbar() {
+function Navigation() {
     const auth = useAuth();
     return (
-        <div>
-            <header className="Navbar">
+        <div className="Navbar">
+            <header>
                 <Link to={ROUTES.HOME}><li>Home</li></Link>
                 {auth.user ? (
                     <>
@@ -28,4 +29,4 @@ function Navbar() {
     )
 }
 
-export default Navbar
+export default Navigation
