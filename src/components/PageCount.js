@@ -12,13 +12,16 @@ const PageCount = ({ eventsPerPage, totalEvents, paginate}) => {
 
     return (
         <>
-            <div>
+            <div className="PageCount">
                 {totalEvents} events total
             </div>
             <Pagination size="sm" className="PageCount">
                 {pageNumbers.map(number => (
-                    <Pagination.Item key={number}>
-                        <a onClick={() => paginate(number)} href="!#">{number}</a>
+                    // <Pagination.Item key={number}>
+                    //     <a onClick={() => paginate(number)} href="!#">{number}</a>
+                    // </Pagination.Item>
+                    <Pagination.Item key={number} onClick={() => paginate(number)}>
+                        {number}
                     </Pagination.Item>
                 ))}
             </Pagination>

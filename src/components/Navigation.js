@@ -20,7 +20,7 @@ function Navigation() {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto Navar">
                         {auth.user ? (
-                            <>
+                            <div>
                             {/* <LinkContainer to={ROUTES.PROFILE}> */}
                                 <Nav.Link as={Link} to={ROUTES.PROFILE}>Manage Profile</Nav.Link>
                             {/* </LinkContainer> */}
@@ -30,13 +30,13 @@ function Navigation() {
                             {/* <Nav.Link>
                             <li onClick={() => auth.signout()}>Sign Out</li>
                             </Nav.Link> */}
-                        </>
+                        </div>
                         ): (
-                        <>
+                        <div>
                             {/* <LinkContainer to={ROUTES.LOGIN}> */}
                                 <Nav.Link as={Link} to={ROUTES.LOGIN}>Log In</Nav.Link>
                             {/* </LinkContainer> */}
-                        </>
+                        </div>
                         )}
                             
                     </Nav>
