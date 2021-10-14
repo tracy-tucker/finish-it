@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { db } from '../../firebase/config'
 import '../styles.css'
 
-const EventInput = () => {
+const EventInput = React.memo(() => {
 
     const [formData, setFormData] = useState({
         title: "",
@@ -61,7 +61,7 @@ const EventInput = () => {
             </div>
         </>
     )
-}
+})
 
 export default EventInput
 

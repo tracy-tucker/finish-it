@@ -8,24 +8,22 @@ const PageCount = ({ eventsPerPage, totalEvents, paginate}) => {
         pageNumbers.push(i)
     }
 
+    console.log(totalEvents)
+
     return (
-        <Pagination size="sm" className="PageCount">
-            {pageNumbers.map(number => (
-                <Pagination.Item key={number}>
-                    <a onClick={() => paginate(number)} href="!#">{number}</a>
-                </Pagination.Item>
-            ))}
-        </Pagination>
-        // <nav>
-        //     <ul>
-        //         {pageNumbers.map(number => (
-        //             <li key={number}>
-        //                 <a onClick={() => paginate(number)} href='!#'>{number}</a>
-        //             </li>
-        //         ))}
-        //         <li>Hello?</li>
-        //     </ul>
-        // </nav>
+        <>
+            <div>
+                {totalEvents} events total
+            </div>
+            <Pagination size="sm" className="PageCount">
+                {pageNumbers.map(number => (
+                    <Pagination.Item key={number}>
+                        <a onClick={() => paginate(number)} href="!#">{number}</a>
+                    </Pagination.Item>
+                ))}
+            </Pagination>
+        </>
+
     )
 }
 

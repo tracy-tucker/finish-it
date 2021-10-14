@@ -5,7 +5,7 @@ import PageCount from '../PageCount'
 import { EventContext } from '../../context/EventsContext'
 import { Modal, Button, Alert } from 'react-bootstrap'
 
-const EventsList = () => {
+const EventsList = React.memo(() => {
 
     const {events} = useContext(EventContext)
     console.log("I am after useContext")
@@ -101,7 +101,7 @@ const EventsList = () => {
 
         </>
     )
-}
+})
 
 export default EventsList
 

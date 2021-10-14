@@ -1,5 +1,5 @@
 import React from 'react'
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { Navbar, Container, Nav } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 import './styles.css'
@@ -21,24 +21,21 @@ function Navigation() {
                     <Nav className="me-auto Navar">
                         {auth.user ? (
                             <>
-                            <LinkContainer to={ROUTES.PROFILE}>
-                                <Nav.Link>Manage Profile</Nav.Link>
-                            </LinkContainer>
-                            <LinkContainer to={ROUTES.DASHBOARD}>
-                                <Nav.Link>Go to Dashboard</Nav.Link>
-                            </LinkContainer>
-                            {/* <LinkContainer>
-                                <Nav.Link onClick={() => auth.signout()}>Sign Out</Nav.Link>
-                            </LinkContainer> */}
-                            <Nav.Link>
+                            {/* <LinkContainer to={ROUTES.PROFILE}> */}
+                                <Nav.Link as={Link} to={ROUTES.PROFILE}>Manage Profile</Nav.Link>
+                            {/* </LinkContainer> */}
+                            {/* <LinkContainer to={ROUTES.DASHBOARD}> */}
+                                <Nav.Link as={Link} to={ROUTES.DASHBOARD}>Go to Dashboard</Nav.Link>
+                            {/* </LinkContainer> */}
+                            {/* <Nav.Link>
                             <li onClick={() => auth.signout()}>Sign Out</li>
-                            </Nav.Link>
+                            </Nav.Link> */}
                         </>
                         ): (
                         <>
-                            <LinkContainer to={ROUTES.LOGIN}>
-                                <Nav.Link>Log In</Nav.Link>
-                            </LinkContainer>
+                            {/* <LinkContainer to={ROUTES.LOGIN}> */}
+                                <Nav.Link as={Link} to={ROUTES.LOGIN}>Log In</Nav.Link>
+                            {/* </LinkContainer> */}
                         </>
                         )}
                             
