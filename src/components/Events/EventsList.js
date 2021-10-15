@@ -33,7 +33,6 @@ const EventsList = React.memo(() => {
 
         return () => {
             handleShowAlert()
-            console.log("Is alert firing?")
         }
     }, [events])
     // [events] added so that the effect fires when events change
