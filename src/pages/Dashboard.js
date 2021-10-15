@@ -1,11 +1,11 @@
 import React from 'react'
-import EventsReadOnly from '../components/events/EventsReadOnly'
+import EventsReadList from '../components/events/EventsReadList'
 
 const Dashboard = () => {
     return (
         <div>
             <h1>Welcome | FINISH IT Dashboard</h1>
-           <EventsReadOnly />
+           <EventsReadList />
         </div>
     )
 }
