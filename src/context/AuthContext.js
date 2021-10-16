@@ -34,6 +34,7 @@ function useProvideAuth() {
         return response.user;
       });
   };
+  //ADD ERROR MESSAGES
 
   const signup = ({ email, password, callback }) => {
     return firebase
