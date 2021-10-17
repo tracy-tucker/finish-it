@@ -40,6 +40,8 @@ const Login = () => {
                 />
                 <button type='submit'>Log In</button>
             </form>
+            <br/>
+            <p id="err"></p>
         </div>
     )
 }

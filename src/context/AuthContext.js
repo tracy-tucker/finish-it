@@ -32,6 +32,9 @@ function useProvideAuth() {
         setUser(response.user);
         callback();
         return response.user;
+      }).catch(err => {
+        console.log("ERROR", err.message)
+        document.getElementById('err').innerHTML = err.message
       });
   };
   //ADD ERROR MESSAGES
