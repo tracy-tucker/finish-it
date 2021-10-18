@@ -1,7 +1,14 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+// import { TaskContext } from '../../context/TasksContext'
 
 const Task = () => {
+
+    // const {tasks} = useContext(TaskContext)
+
+    // console.log(tasks)
+
     const [text, setText] = useState("")
+
 
     const changeText = event => {
         setText(event.target.value)
@@ -26,6 +33,12 @@ const Task = () => {
                 onChange={changeText}
                 onKeyDown={keydownText}
             />
+            {/* <ul>
+                {tasks.map(task => (
+                    <li key={task.id}>{task.taskItem}</li>
+                ))}
+                
+            </ul> */}
         </div>
     )
 }
