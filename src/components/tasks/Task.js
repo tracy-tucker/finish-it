@@ -8,8 +8,11 @@ const Task = () => {
     }
 
     const keydownText = event => {
-        if (event.keyCode === 13) {
-            console.log("keydownText", text)
+        const isEnter = event.keyCode === 13
+        const newText = text.trim()
+        const isTextPresent = newText.length > 0;
+        if (isEnter && isTextPresent) {
+            console.log("keydownText", newText)
         }
     }
 
