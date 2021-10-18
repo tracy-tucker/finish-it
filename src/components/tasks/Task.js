@@ -1,11 +1,6 @@
-import React, { useState, useContext } from 'react'
-// import { TaskContext } from '../../context/TasksContext'
+import React, { useState } from 'react'
 
 const Task = () => {
-
-    // const {tasks} = useContext(TaskContext)
-
-    // console.log(tasks)
 
     const [text, setText] = useState("")
 

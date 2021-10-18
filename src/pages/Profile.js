@@ -1,13 +1,13 @@
 import React from 'react'
 import EventsMgmt from '../components/events/EventsMgmt'
-import Task from '../components/tasks/Task'
+import TasksMgmt from '../components/tasks/TasksMgmt'
 
 const Profile = () => {
     return (
         <div>
             <p>PROFILE PAGE</p>
             <EventsMgmt />
-            <Task />
+            <TasksMgmt />
         </div>
     )
 }

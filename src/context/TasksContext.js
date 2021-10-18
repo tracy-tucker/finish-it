@@ -19,7 +19,6 @@ const TaskContextProvider = (props) => {
         setLoading(false)
         return () => subscriber()
     }, []) // END useEffect
-    console.log(tasks)
 
     if (loading) {
         return <h1>Loading data...</h1>
