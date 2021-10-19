@@ -6,7 +6,7 @@ const EventsMgmt = () => {
     
     return (
         <div className="EventsMgmt">
-            <h2>Manage Events</h2>
+            <h2>Manage Tasks</h2>
             <TaskContextProvider>
                 <TasksList />
             </TaskContextProvider>

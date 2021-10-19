@@ -24,8 +24,18 @@ const TaskContextProvider = (props) => {
         return <h1>Loading data...</h1>
     }
 
+    const addTask = (task) => {
+        db.collection('events').add(task)
+        .then(() => {
+            console.log("Document successfully written!")
+        })
+        .catch((error) => {
+            console.error("Error writing document: ", error)
+        })   
+    }
+
     return (
-        <TaskContext.Provider value={{tasks}}>
+        <TaskContext.Provider value={{tasks, addTask}}>
             {props.children}
         </TaskContext.Provider>
     )
