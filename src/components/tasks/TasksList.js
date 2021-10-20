@@ -22,9 +22,6 @@ const TasksList = React.memo(() => {
                     
                 </ul>
             </div>
-            <div>
-                ADD TASK HERE
-            </div>
         </div>
     )
 })

@@ -25,7 +25,7 @@ const TaskContextProvider = (props) => {
     }
 
     const addTask = (task) => {
-        db.collection('events').add(task)
+        db.collection('tasks').add(task)
         .then(() => {
             console.log("Document successfully written!")
         })
