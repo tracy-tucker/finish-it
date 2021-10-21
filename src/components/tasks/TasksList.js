@@ -13,13 +13,17 @@ const TasksList = React.memo(() => {
         <div>
             <div>
                 <AddTask />
+            </div>
+            <div>
+                <h1>Manager's Tasks</h1>
+            </div>
+            <div>
                 <ul>
                     {tasks.map(task => (
                         <li key={task.id}>
                             <Task task={task} />
                         </li>
                     ))}
-                    
                 </ul>
             </div>
         </div>
