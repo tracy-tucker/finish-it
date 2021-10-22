@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import {InitialData} from './InitialData'
+import Column from './Column'
 
 const TaskBoard = () => {
 

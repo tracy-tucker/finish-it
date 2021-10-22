@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Column = () => {
+const Column = ({column}) => {
     return (
         <div>
-            New column...
+            {column.title}
         </div>
     )
 }
