@@ -13,11 +13,13 @@ const TaskList = styled.div`
 padding: 8px;
 `;
 
-const Column = ({column}) => {
+const Column = ({column, tasks}) => {
     return (
         <Container>
             <Title>{column.title}</Title>
-            <TaskList>Tasks go here</TaskList>
+            <TaskList>
+                {tasks.map(task => <Task key={task.id} task={task} />)}
+            </TaskList>
         </Container>
     )
 }
