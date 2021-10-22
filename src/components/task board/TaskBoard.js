@@ -4,7 +4,7 @@ import Column from './Column'
 
 const TaskBoard = () => {
 
-    const [data, setData] = useState(InitialData)
+    const [data] = useState(InitialData)
     console.log(data)
 
     return (
