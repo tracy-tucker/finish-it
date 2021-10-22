@@ -1,13 +1,15 @@
 import React from 'react'
 import EventsMgmt from '../components/events/EventsMgmt'
-import TasksMgmt from '../components/tasks/TasksMgmt'
+import TaskBoard from '../components/task board/TaskBoard'
+// import TasksMgmt from '../components/tasks/TasksMgmt'
 
 const Profile = () => {
     return (
         <div>
             <p>PROFILE PAGE</p>
             <EventsMgmt />
-            <TasksMgmt />
+            {/* <TasksMgmt /> */}
+            <TaskBoard />
         </div>
     )
 }
