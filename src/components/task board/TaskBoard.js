@@ -9,15 +9,21 @@ const TaskBoard = () => {
     const [data] = useState(InitialData)
     console.log(data)
 
-    onDragEnd = result => {
-        // TODO: Reorder the column
-    }
+    // const onDragEnd = result => {
+    //     // TODO: Reorder the column
+    // }
+
+    function onDragEnd() {
+        // if (!result.destination) {
+        //   return;
+        }
 
     return (
         <DragDropContext
             onDragStart
             onDragUpdate
-            onDragEnd
+            // onDragEnd
+            onDragEnd={() => {}}
         >
             {data.columnOrder.map(columnId => {
                 const column = data.columns[columnId]

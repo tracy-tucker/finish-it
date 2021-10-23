@@ -22,10 +22,10 @@ const Column = ({column, tasks}) => {
             <Droppable droppableId={column.id}>
                 {provided => (
                     <TaskList
-                        innerRef={provided.innerRef}
+                        ref={provided.innerRef}
                         {...provided.droppableProps}
                     >
-                        {tasks.map(task => <Task key={task.id} task={task} />)}
+                        {tasks.map((task, index) => (<Task key={task.id} task={task} index={index} />))}
                         {provided.placeholder}
                     </TaskList>
                 )}
@@ -55,4 +55,5 @@ export default Column
 // You can assign the provided.innerRef function to this prop
 
 // A placeholder is a React element that is used to increase the availalbe space in a droppable during a drag
+// The placeholder needs to be added as a child of the component that you designate as the droppable
 
