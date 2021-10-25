@@ -6,7 +6,7 @@ import { DragDropContext } from 'react-beautiful-dnd';
 
 const TaskBoard = () => {
 
-    const [data] = useState(InitialData)
+    const [data, setData] = useState(InitialData)
     console.log(data)
 
     // const onDragEnd = result => {
@@ -27,7 +27,11 @@ const TaskBoard = () => {
             return
         }
 
-        
+        const column = data.columns[source.droppableId]
+        const newTaskIds = Array.from(column.taskIds)
+        newTaskIds.splice(source.index, 1)
+        newTaskIds.splice(destination.index, 0, draggableId)
+
     }
 
     return (
