@@ -13,17 +13,17 @@ const TaskBoard = () => {
     //     // TODO: Reorder the column
     // }
 
-    function onDragEnd() {
+    const onDragEnd = (result) => {
         // if (!result.destination) {
         //   return;
         }
 
     return (
         <DragDropContext
-            onDragStart
-            onDragUpdate
+            // onDragStart
+            // onDragUpdate
             // onDragEnd
-            onDragEnd={() => {}}
+            onDragEnd={onDragEnd}
         >
             {data.columnOrder.map(columnId => {
                 const column = data.columns[columnId]
