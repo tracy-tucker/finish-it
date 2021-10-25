@@ -33,6 +33,17 @@ const TaskBoard = () => {
         newTaskIds.splice(destination.index, 0, draggableId)
         console.log(newTaskIds)
 
+        const newColumn = {
+            ...column,
+            taskIds: newTaskIds,
+        }
+        setData({
+            ...data,
+            columns: {
+                ...data.columns,
+                [newColumn.id]: newColumn,
+            }
+        })
     }
 
     return (
