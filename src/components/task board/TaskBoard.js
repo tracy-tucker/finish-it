@@ -13,16 +13,27 @@ const TaskBoard = () => {
     //     // TODO: Reorder the column
     // }
 
-    const onDragEnd = (result) => {
-        // if (!result.destination) {
-        //   return;
+    // Result object properties. The info captured by the result object
+    const onDragEnd = result => {
+        const { destination, source, draggableId } = result
+        
+        if (!destination) {
+            return
         }
+
+        if (destination.droppableId === source.droppableId &&
+            destination.index === source.index
+            ) {
+            return
+        }
+
+        
+    }
 
     return (
         <DragDropContext
             // onDragStart
             // onDragUpdate
-            // onDragEnd
             onDragEnd={onDragEnd}
         >
             {data.columnOrder.map(columnId => {
@@ -42,3 +53,19 @@ export default TaskBoard
 // onDragUpdate - called when something changes during the drag
 // onDragEnd - called at the end of the drag
 // onDragEnd - Only required context. It synchronously updates your state to reflect the drag and drop result
+
+
+// Example result object
+// const result = {
+//     draggableId: 'task-1',
+//     type: 'TYPE',
+//     reason: 'DROP',
+//     source: {
+//         droppableId: 'column-1',
+//         index: 0,
+//     },
+//     destination: {
+//         droppableId: 'column-1',
+//         index: 1,
+//     },
+// }
