@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Task from './Task';
-import { Droppable } from 'react-beautiful-dnd';
+import { Draggable, Droppable } from 'react-beautiful-dnd';
 
 const Container = styled.div`
 margin: 8px;
@@ -20,7 +20,7 @@ const Column = ({column, tasks}) => {
         <Container>
             <Title>{column.title}</Title>
             <Droppable droppableId={column.id}>
-                {provided => (
+                {(provided, snapshot) => (
                     <TaskList
                         ref={provided.innerRef}
                         {...provided.droppableProps}
@@ -57,3 +57,14 @@ export default Column
 // A placeholder is a React element that is used to increase the availalbe space in a droppable during a drag
 // The placeholder needs to be added as a child of the component that you designate as the droppable
 
+// Example Draggable
+// const draggableSnapshot = {
+//     isDragging: true,
+//     draggingOver: 'column-1',
+// }
+
+// Example Droppable
+// const droppableSnapshot = {
+//     isDraggingOver: true,
+//     draggingOverWith: 'task-1',
+// }
