@@ -13,6 +13,7 @@ padding: 8px;
 `;
 const TaskList = styled.div`
 padding: 8px;
+background-color: ${props => props.isDraggingOver ? 'lightgray' : 'white'}
 `;
 
 const Column = ({column, tasks}) => {
@@ -24,6 +25,7 @@ const Column = ({column, tasks}) => {
                     <TaskList
                         ref={provided.innerRef}
                         {...provided.droppableProps}
+                        isDraggingOver={snapshot.isDraggingOver}
                     >
                         {tasks.map((task, index) => (<Task key={task.id} task={task} index={index} />))}
                         {provided.placeholder}
