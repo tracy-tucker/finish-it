@@ -44,6 +44,8 @@ export default Task
 // Provided object has another property called 'dragHandleProps'
 // dragHandleProps need to be applied to the part of the component that we want to use to be able to control the entire component
 // You can use this to drag a large item by just a small part of it
+// dragHandleProps - part of the drag that is used to control the dragging of the entire draggable
+// the draggable and the drangHandle are of the same component
 
 // You also need to provide a ref to the draggable, as you did with the droppable
 // innerRef a function used to supply the DOM node of your component to React Beautifl DND
