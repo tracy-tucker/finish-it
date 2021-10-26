@@ -2,7 +2,11 @@ import React, { useState } from 'react'
 import {InitialData} from './InitialData'
 import Column from './Column'
 import { DragDropContext } from 'react-beautiful-dnd';
+import styled from 'styled-components'
 
+const Container = styled.div`
+display: flex;
+`
 
 const TaskBoard = () => {
 
@@ -53,12 +57,14 @@ const TaskBoard = () => {
             // onDragUpdate
             onDragEnd={onDragEnd}
         >
-            {data.columnOrder.map(columnId => {
-                const column = data.columns[columnId]
-                const tasks = column.taskIds.map(taskId => data.tasks[taskId])
-                
-                return <Column key={column.id} column={column} tasks={tasks} />
-            })}
+            <Container>
+                {data.columnOrder.map(columnId => {
+                    const column = data.columns[columnId]
+                    const tasks = column.taskIds.map(taskId => data.tasks[taskId])
+                    
+                    return <Column key={column.id} column={column} tasks={tasks} />
+                })}
+            </Container>
         </DragDropContext>
     )
 }

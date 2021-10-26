@@ -1,19 +1,24 @@
 import React from 'react'
 import styled from 'styled-components'
 import Task from './Task';
-import { Draggable, Droppable } from 'react-beautiful-dnd';
+import { Droppable } from 'react-beautiful-dnd';
 
 const Container = styled.div`
 margin: 8px;
 border: 1px solid lightgray;
 border-radius: 2px;
+width: 220px;
+display: flex;
+flex-direction: column;
 `;
 const Title = styled.h3`
 padding: 8px;
 `;
 const TaskList = styled.div`
 padding: 8px;
-background-color: ${props => props.isDraggingOver ? 'lightgray' : 'white'}
+background-color: ${props => props.isDraggingOver ? 'lightgray' : 'white'};
+flex-grow: 1;
+min-height: 100px;
 `;
 
 const Column = ({column, tasks}) => {
