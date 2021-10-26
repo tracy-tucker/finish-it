@@ -85,3 +85,6 @@ export default TaskBoard
 //         index: 1,
 //     },
 // }
+
+// Changing the color of a draggable/droppable is acceptable
+// Do not change dimensions!

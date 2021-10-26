@@ -12,7 +12,7 @@ margin-bottom: 8px;
 const Task = ({task, index}) => {
     return (
         <Draggable draggableId={task.id} index={index}>
-            {provided => (
+            {(provided, snapshot) => (
                 <Container
                     {...provided.draggableProps}
                     {...provided.dragHandleProps}
@@ -45,3 +45,17 @@ export default Task
 
 // You also need to provide a ref to the draggable, as you did with the droppable
 // innerRef a function used to supply the DOM node of your component to React Beautifl DND
+
+// Snapshot is an object that contains a number of properties that let you style your draggable comp
+
+// Example Draggable Snapshot
+// const draggableSnapshot = {
+//     isDragging: true,
+//     draggingOver: 'column-1',
+// }
+
+// Example Droppable Snapshot
+// const droppableSnapshot = {
+//     isDraggingOver: true,
+//     draggingOverWith: 'task-1',
+// }
