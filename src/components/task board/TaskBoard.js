@@ -9,12 +9,13 @@ const TaskBoard = () => {
     const [data, setData] = useState(InitialData)
     console.log(data)
 
-    // const onDragEnd = result => {
-    //     // TODO: Reorder the column
-    // }
+    const onDragStart = () => {
+        document.body.style.color='#EEE'
+    }
 
     // Result object properties. The info captured by the result object
     const onDragEnd = result => {
+        document.body.style.color='inherit'
         const { destination, source, draggableId } = result
         
         if (!destination) {
@@ -48,7 +49,7 @@ const TaskBoard = () => {
 
     return (
         <DragDropContext
-            // onDragStart
+            onDragStart={onDragStart}
             // onDragUpdate
             onDragEnd={onDragEnd}
         >
@@ -88,3 +89,30 @@ export default TaskBoard
 
 // Changing the color of a draggable/droppable is acceptable
 // Do not change dimensions!
+
+// Example data from object
+
+// onDragStart
+// const start ={
+//     draggableId: 'task-1',
+//     type: 'TYPE',
+//     source: {
+//         droppableId: 'column-1',
+//         index: 0,
+//     },
+// }
+
+// onDragUpdate
+// const update = {
+//     ...start,
+//     destination: {
+//         droppableId: 'column-1',
+//         index: 1,
+//     },
+// }
+
+// onDragEnd
+// const result = {
+//     ...update,
+//     reason: 'DROP',
+// }
