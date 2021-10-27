@@ -110,11 +110,11 @@ const TaskBoard = () => {
                     <Container
                     {...provided.droppableProps}
                     ref={provided.innerRef}>
-                        {data.columnOrder.map(columnId => {
+                        {data.columnOrder.map((columnId, index) => {
                             const column = data.columns[columnId]
                             const tasks = column.taskIds.map(taskId => data.tasks[taskId])
                             
-                            return <Column key={column.id} column={column} tasks={tasks} />
+                            return <Column key={column.id} column={column} tasks={tasks} index={index} />
                         })}
                         {provided.placeholder}
                     </Container>
