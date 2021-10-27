@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import {InitialData} from './InitialData'
 import Column from './Column'
-import { DragDropContext } from 'react-beautiful-dnd';
+import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import styled from 'styled-components'
 
 const Container = styled.div`
@@ -105,14 +105,21 @@ const TaskBoard = () => {
             // onDragUpdate
             onDragEnd={onDragEnd}
         >
-            <Container>
-                {data.columnOrder.map(columnId => {
-                    const column = data.columns[columnId]
-                    const tasks = column.taskIds.map(taskId => data.tasks[taskId])
-                    
-                    return <Column key={column.id} column={column} tasks={tasks} />
-                })}
-            </Container>
+            <Droppable droppableId="all-columns" dir4ection="horizontal" type="column">
+                {provided => (
+                    <Container
+                    {...provided.droppableProps}
+                    ref={provided.innerRef}>
+                        {data.columnOrder.map(columnId => {
+                            const column = data.columns[columnId]
+                            const tasks = column.taskIds.map(taskId => data.tasks[taskId])
+                            
+                            return <Column key={column.id} column={column} tasks={tasks} />
+                        })}
+                        {provided.placeholder}
+                    </Container>
+                )}
+            </Droppable>
         </DragDropContext>
     )
 }
