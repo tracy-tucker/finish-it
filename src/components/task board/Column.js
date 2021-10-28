@@ -23,7 +23,10 @@ min-height: 100px;
 
 const Column = ({column, tasks, index}) => {
     return (
-        <Draggable draggableId={column.id} index={index}>
+        <Draggable 
+            draggableId={column.id}
+            index={index}
+        >
             {(provided) => (
                 <Container
                     {...provided.draggableProps}
@@ -37,14 +40,15 @@ const Column = ({column, tasks, index}) => {
                                 {...provided.droppableProps}
                                 isDraggingOver={snapshot.isDraggingOver}
                             >
-                                {tasks.map((task, index) => (<Task key={task.id} task={task} index={index} />))}
+                                {tasks.map((task, index) => (
+                                    <Task key={task.id} task={task} index={index} />
+                                ))}
                                 {provided.placeholder}
                             </TaskList>
                         )}
                     </Droppable>
                 </Container>
-            )}
-            
+            )}   
         </Draggable>
     )
 }

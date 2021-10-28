@@ -20,7 +20,7 @@ const TaskBoard = () => {
     // Result object properties. The info captured by the result object
     const onDragEnd = result => {
         document.body.style.color='inherit'
-        const { destination, source, draggableId } = result
+        const { destination, source, draggableId, type } = result
         
         if (!destination) {
             return
@@ -30,6 +30,19 @@ const TaskBoard = () => {
             destination.index === source.index
             ) {
             return
+        }
+
+        // Moving columns horizontally
+        if (type === 'column') {
+            const newColumnOrder = Array.from(data.columnOrder)
+            newColumnOrder.splice(source.index, 1)
+            newColumnOrder.splice(destination.index, 0, draggableId)
+            console.log("NEW ORDER", newColumnOrder)
+
+            setData({
+                ...data,
+                columnOrder: newColumnOrder
+            })
         }
 
         // Moving task order
@@ -46,14 +59,14 @@ const TaskBoard = () => {
                 ...start,
                 taskIds: newTaskIds,
             }
+            
             setData({
                 ...data,
                 columns: {
                     ...data.columns,
-                    [newColumn.id]: newColumn,
+                    [newColumn.id]: newColumn
                 }
-            })
-            
+            }) 
         }
 
         // Moving from one list to another
@@ -61,7 +74,7 @@ const TaskBoard = () => {
         startTaskIds.splice(source.index, 1)
         const newStart = {
             ...start,
-            taskIds: startTaskIds
+            taskIds: startTaskIds,
         }
 
         const finishTaskIds = Array.from(finish.taskIds)
@@ -79,24 +92,6 @@ const TaskBoard = () => {
                 [newFinish.id]: newFinish
             }
         })
-
-        // const column = data.columns[source.droppableId]
-        // const newTaskIds = Array.from(column.taskIds)
-        // newTaskIds.splice(source.index, 1)
-        // newTaskIds.splice(destination.index, 0, draggableId)
-        // console.log(newTaskIds)
-
-        // const newColumn = {
-        //     ...column,
-        //     taskIds: newTaskIds,
-        // }
-        // setData({
-        //     ...data,
-        //     columns: {
-        //         ...data.columns,
-        //         [newColumn.id]: newColumn,
-        //     }
-        // })
     }
 
     return (
@@ -105,16 +100,28 @@ const TaskBoard = () => {
             // onDragUpdate
             onDragEnd={onDragEnd}
         >
-            <Droppable droppableId="all-columns" dir4ection="horizontal" type="column">
+            <Droppable
+                droppableId="all-columns"
+                direction="horizontal"
+                type="column"
+            >
                 {provided => (
                     <Container
-                    {...provided.droppableProps}
-                    ref={provided.innerRef}>
+                        {...provided.droppableProps}
+                        ref={provided.innerRef}
+                    >
                         {data.columnOrder.map((columnId, index) => {
                             const column = data.columns[columnId]
                             const tasks = column.taskIds.map(taskId => data.tasks[taskId])
                             
-                            return <Column key={column.id} column={column} tasks={tasks} index={index} />
+                            return (
+                                <Column
+                                    key={column.id}
+                                    column={column}
+                                    tasks={tasks}
+                                    index={index}
+                                />
+                            )
                         })}
                         {provided.placeholder}
                     </Container>
