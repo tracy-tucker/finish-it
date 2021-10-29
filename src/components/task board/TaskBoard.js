@@ -43,6 +43,7 @@ const TaskBoard = () => {
                 ...data,
                 columnOrder: newColumnOrder
             })
+            return
         }
 
         // Moving task order
