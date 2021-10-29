@@ -66,7 +66,8 @@ const TaskBoard = () => {
                     ...data.columns,
                     [newColumn.id]: newColumn
                 }
-            }) 
+            })
+            return
         }
 
         // Moving from one list to another
@@ -92,6 +93,7 @@ const TaskBoard = () => {
                 [newFinish.id]: newFinish
             }
         })
+        return
     }
 
     return (
