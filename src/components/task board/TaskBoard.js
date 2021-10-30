@@ -187,3 +187,8 @@ export default TaskBoard
 //     ...update,
 //     reason: 'DROP',
 // }
+
+// LEFT TO DO:
+// input to add tasks
+// integrate with Firestore
+// add priority checkbox
