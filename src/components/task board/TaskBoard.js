@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
-import {InitialData} from './InitialData'
-import Column from './Column'
+import React, { useContext } from 'react'
+// import {InitialData} from './InitialData'
+import { TaskContext } from '../../context/TasksContext'
+// import Column from './Column'
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import styled from 'styled-components'
 
@@ -10,8 +11,9 @@ display: flex;
 
 const TaskBoard = () => {
 
-    const [data, setData] = useState(InitialData)
-    console.log(data)
+    const {tasks} = useContext(TaskContext)
+    // const [data, setData] = useState(InitialData)
+    console.log('am i working', tasks)
 
     const onDragStart = () => {
         document.body.style.color='#EEE'
@@ -34,21 +36,21 @@ const TaskBoard = () => {
 
         // Moving columns horizontally
         if (type === 'column') {
-            const newColumnOrder = Array.from(data.columnOrder)
+            const newColumnOrder = Array.from(tasks.columnOrder)
             newColumnOrder.splice(source.index, 1)
             newColumnOrder.splice(destination.index, 0, draggableId)
             console.log("NEW ORDER", newColumnOrder)
 
-            setData({
-                ...data,
-                columnOrder: newColumnOrder
-            })
+            // setData({
+            //     ...data,
+            //     columnOrder: newColumnOrder
+            // })
             return
         }
 
         // Moving task order
-        const start = data.columns[source.droppableId]
-        const finish = data.columns[destination.droppableId]
+        const start = tasks.columns[source.droppableId]
+        const finish = tasks.columns[destination.droppableId]
 
         if (start === finish) {
             const newTaskIds = Array.from(start.taskIds)
@@ -61,13 +63,13 @@ const TaskBoard = () => {
                 taskIds: newTaskIds,
             }
             
-            setData({
-                ...data,
-                columns: {
-                    ...data.columns,
-                    [newColumn.id]: newColumn
-                }
-            })
+            // setData({
+            //     ...data,
+            //     columns: {
+            //         ...data.columns,
+            //         [newColumn.id]: newColumn
+            //     }
+            // })
             return
         }
 
@@ -86,14 +88,14 @@ const TaskBoard = () => {
             taskIds: finishTaskIds
         }
 
-        setData({
-            ...data,
-            columns: {
-                ...data.columns,
-                [newStart.id]: newStart,
-                [newFinish.id]: newFinish
-            }
-        })
+        // setData({
+        //     ...data,
+        //     columns: {
+        //         ...data.columns,
+        //         [newStart.id]: newStart,
+        //         [newFinish.id]: newFinish
+        //     }
+        // })
         return
     }
 
@@ -113,7 +115,12 @@ const TaskBoard = () => {
                         {...provided.droppableProps}
                         ref={provided.innerRef}
                     >
-                        {data.columnOrder.map((columnId, index) => {
+                        <ul>
+                            {tasks.map(task => (
+                                <li>{task.content}</li>
+                            ))}
+                        </ul>
+                        {/* {data.columnOrder.map((columnId, index) => {
                             const column = data.columns[columnId]
                             const tasks = column.taskIds.map(taskId => data.tasks[taskId])
                             
@@ -125,7 +132,7 @@ const TaskBoard = () => {
                                     index={index}
                                 />
                             )
-                        })}
+                        })} */}
                         {provided.placeholder}
                     </Container>
                 )}

@@ -7,10 +7,10 @@ const AddTask = () => {
     const {addTask} = useContext(TaskContext)
 
     const [taskData, setTaskData] = useState({
-        taskItem: "",
-        dueDate: "",
-        priority: "",
-        completed: false
+        taskContent: ""
+        // dueDate: "",
+        // priority: "",
+        // completed: false
     })
 
     const saveTask = (e) => {
@@ -35,12 +35,12 @@ const AddTask = () => {
                         type="text"
                         placeholder="Task *"
                         name="task"
-                        value={taskData.taskItem}
-                        onChange={e => setTaskData({...taskData, taskItem: e.target.value})}
+                        value={taskData.taskContent}
+                        onChange={e => setTaskData({...taskData, taskContent: e.target.value})}
                         required
                     >
                     </Form.Control>
-                    <Form.Control
+                    {/* <Form.Control
                         type="date"
                         name="dueDate"
                         value={taskData.dueDate}
@@ -55,7 +55,7 @@ const AddTask = () => {
                         <option>Low</option>
                         <option>Medium</option>
                         <option>High</option>
-                    </Form.Select>
+                    </Form.Select> */}
                 </Form.Group>
                 <Button variant="success" type="submit" block>
                     Add Task
