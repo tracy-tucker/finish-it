@@ -5,22 +5,22 @@ export const TestContext = createContext();
 
 const TestContextProvider = (props) => {
     
-    const [tasks, setTasks] = useState([])
+    const [columns, setColumns] = useState([])
 
     useEffect(() => {
         const subscriber = db
-        .collection('tasks').onSnapshot(querySnapshot => {
-            setTasks(querySnapshot.docs.map((doc) => ({
+        .collection('columns').onSnapshot(querySnapshot => {
+            setColumns(querySnapshot.docs.map((doc) => ({
                 id: doc.id,
                 ...doc.data()
             }))) // end setEvents
         }) // END collection call
-        
+
         return () => subscriber()
     }, []) // END useEffect
 
     return (
-        <TestContext.Provider value={{tasks}}>
+        <TestContext.Provider value={{columns}}>
             {props.children}
         </TestContext.Provider>
     )

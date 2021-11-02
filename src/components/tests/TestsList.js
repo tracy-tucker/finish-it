@@ -4,16 +4,16 @@ import Test from './Test'
 
 const TestsList = React.memo(() => {
     
-    const { tasks } = useContext(TestContext)
+    const { columns } = useContext(TestContext)
     
-    console.log('coming in', tasks)
+    console.log('coming in', columns)
     
     return (
         <div>
             <ul>
-            {tasks.map(task => (
-                        <li key={task.id}>
-                            <Test task={task} />
+            {columns.map(column => (
+                        <li key={column.id}>
+                            <Test column={column} />
                         </li>
                     ))}
             </ul>

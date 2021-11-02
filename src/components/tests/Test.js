@@ -1,10 +1,10 @@
 import React from 'react'
 
-const Test = ({task}) => {
+const Test = ({column}) => {
     
     return (
         <div>
-            <h3>TASK: {task.content}</h3>
+            <h3>TASK: {column.taskIds}</h3>
         </div>
     )
 }
