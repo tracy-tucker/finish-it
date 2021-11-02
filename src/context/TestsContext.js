@@ -9,7 +9,7 @@ const TestContextProvider = (props) => {
 
     useEffect(() => {
         const subscriber = db
-        .collection('columns').onSnapshot(querySnapshot => {
+        .collection('columnOrder').onSnapshot(querySnapshot => {
             setColumns(querySnapshot.docs.map((doc) => ({
                 id: doc.id,
                 ...doc.data()
