@@ -1,6 +1,7 @@
 import React from 'react'
 import EventsMgmt from '../components/events/EventsMgmt'
 import TaskBoard from '../components/task board/TaskBoard'
+import TestsMgmt from '../components/tests/TestsMgmt'
 // import TasksMgmt from '../components/tasks/TasksMgmt'
 
 const Profile = () => {
@@ -10,6 +11,7 @@ const Profile = () => {
             <EventsMgmt />
             {/* <TasksMgmt /> */}
             <TaskBoard />
+            <TestsMgmt />
         </div>
     )
 }
