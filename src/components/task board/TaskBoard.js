@@ -143,7 +143,6 @@ const TaskBoard = () => {
 
 export default TaskBoard
 
-// Rerouting
 
 // DragDropContext has 3 callbacks
 // onDragStart - called when the drag starts
