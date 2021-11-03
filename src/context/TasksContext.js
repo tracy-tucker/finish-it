@@ -14,7 +14,7 @@ const TaskContextProvider = (props) => {
             setTasks(querySnapshot.docs.map((doc) => ({
                 id: doc.id,
                 ...doc.data()
-            }))) // end setEvents
+            }))) // end setTasks
         }) // END collection call
 
         setLoading(false)
