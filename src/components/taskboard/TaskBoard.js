@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 // import {InitialData} from './InitialData'
 import { TaskContext } from '../../context/TasksContext'
+import { ColumnContext } from '../../context/ColumnsContext';
 // import Column from './Column'
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import styled from 'styled-components'
@@ -9,8 +10,9 @@ const Container = styled.div`
 display: flex;
 `
 
-const TaskBoard = React.memo(() => {
+const TaskBoard = () => {
 
+    const {columns} = useContext(ColumnContext)
     const {tasks} = useContext(TaskContext)
     // const [data, setData] = useState(InitialData)
     console.log('am i working', tasks)
@@ -115,11 +117,11 @@ const TaskBoard = React.memo(() => {
                         {...provided.droppableProps}
                         ref={provided.innerRef}
                     >
-                        <ul>
+                        {/* <ul>
                             {tasks.map(task => (
                                 <li>{task.content}</li>
                             ))}
-                        </ul>
+                        </ul> */}
                         {/* {data.columnOrder.map((columnId, index) => {
                             const column = data.columns[columnId]
                             const tasks = column.taskIds.map(taskId => data.tasks[taskId])
@@ -139,7 +141,7 @@ const TaskBoard = React.memo(() => {
             </Droppable>
         </DragDropContext>
     )
-})
+}
 
 export default TaskBoard
 
