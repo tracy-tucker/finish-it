@@ -9,7 +9,7 @@ const Container = styled.div`
 display: flex;
 `
 
-const TaskBoard = () => {
+const TaskBoard = React.memo(() => {
 
     const {tasks} = useContext(TaskContext)
     // const [data, setData] = useState(InitialData)
@@ -139,7 +139,7 @@ const TaskBoard = () => {
             </Droppable>
         </DragDropContext>
     )
-}
+})
 
 export default TaskBoard
 

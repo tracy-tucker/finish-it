@@ -26,20 +26,6 @@ const TaskContextProvider = (props) => {
         return <h1>Loading data...</h1>
     }
 
-    useEffect(() => {
-        const subscriber2 = db
-        .collection('columns').onSnapshot(querySnapshot => {
-            setTasks(querySnapshot.docs.map((doc) => ({
-                id: doc.id,
-                ...doc.data()
-            }))) // end setEvents
-        }) // END collection call
-
-        setLoading(false)
-        return () => subscriber2()
-        
-    }, []) // END useEffect
-
     const addTask = (task) => {
         db.collection('tasks').add(task)
         .then(() => {
@@ -51,7 +37,7 @@ const TaskContextProvider = (props) => {
     }
 
     return (
-        <TaskContext.Provider value={{tasks, columns, addTask}}>
+        <TaskContext.Provider value={{tasks, addTask}}>
             {props.children}
         </TaskContext.Provider>
     )

@@ -1,6 +1,6 @@
 import React from 'react'
 import TaskContextProvider from '../../context/TasksContext'
-import TaskBoard from '../task board/TaskBoard'
+import TaskBoard from '../taskboard/TaskBoard'
 
 const TasksMgmt = () => {
     
