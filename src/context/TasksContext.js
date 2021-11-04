@@ -7,6 +7,7 @@ const TaskContextProvider = (props) => {
 
     const [loading, setLoading] = useState(true)
     const [tasks, setTasks] = useState([])
+    const [columns, setColumns] = useState([])
 
     useEffect(() => {
         const subscriber = db
@@ -21,6 +22,17 @@ const TaskContextProvider = (props) => {
         return () => subscriber()
         
     }, []) // END useEffect
+
+    useEffect(() => {
+        const subscriber = db
+        .collection('columns').onSnapshot(querySnapshot => {
+            setColumns(querySnapshot.docs.map((doc) => ({
+                id: doc.id,
+                ...doc.data()
+            }))) // end setColumns
+        }) // end collection call
+        return () => subscriber()
+    }, [])
 
     if (loading) {
         return <h1>Loading data...</h1>
@@ -37,7 +49,7 @@ const TaskContextProvider = (props) => {
     }
 
     return (
-        <TaskContext.Provider value={{tasks, addTask}}>
+        <TaskContext.Provider value={{tasks, columns, addTask}}>
             {props.children}
         </TaskContext.Provider>
     )

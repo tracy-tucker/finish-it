@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 // import {InitialData} from './InitialData'
 import { TaskContext } from '../../context/TasksContext'
-import { ColumnContext } from '../../context/ColumnsContext';
+// import { ColumnContext } from '../../context/ColumnsContext';
 // import Column from './Column'
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import styled from 'styled-components'
@@ -12,10 +12,11 @@ display: flex;
 
 const TaskBoard = () => {
 
-    const {columns} = useContext(ColumnContext)
-    const {tasks} = useContext(TaskContext)
+    // const {columns} = useContext(ColumnContext)
+    const {tasks, columns} = useContext(TaskContext)
     // const [data, setData] = useState(InitialData)
     console.log('am i working', tasks)
+    console.log('are columns working', columns)
 
     const onDragStart = () => {
         document.body.style.color='#EEE'

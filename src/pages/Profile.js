@@ -2,7 +2,7 @@ import React from 'react'
 import EventsMgmt from '../components/events/EventsMgmt'
 // import ColumnsMgmt from '../components/Mgmt/ColumnsMgmt'
 import TaskBoard from '../components/taskboard/TaskBoard'
-// import TasksMgmt from '../components/Mgmt/TasksMgmt'
+import TasksMgmt from '../components/Mgmt/TasksMgmt'
 // import TestsMgmt from '../components/tests/TestsMgmt'
 // import TasksMgmt from '../components/tasks/TasksMgmt'
 
@@ -11,9 +11,9 @@ const Profile = () => {
         <div>
             <p>PROFILE PAGE</p>
             <EventsMgmt />
-            {/* <ColumnsMgmt />
-            <TasksMgmt /> */}
-            <TaskBoard />
+            {/* <ColumnsMgmt /> */}
+            <TasksMgmt />
+            {/* <TaskBoard /> */}
             {/* <TestsMgmt /> */}
         </div>
     )
