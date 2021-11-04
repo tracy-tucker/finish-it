@@ -12,11 +12,10 @@ display: flex;
 
 const TaskBoard = () => {
 
-    // const {columns} = useContext(ColumnContext)
-    const {tasks, columns} = useContext(TaskboardContext)
+    const {tasks, columns, columnOrder} = useContext(TaskboardContext)
     // const [data, setData] = useState(InitialData)
-    console.log('am i working', tasks)
-    console.log('are columns working', columns)
+    console.log('columns', columns)
+    console.log('columnOrder', columnOrder)
 
     const onDragStart = () => {
         document.body.style.color='#EEE'

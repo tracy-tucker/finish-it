@@ -8,6 +8,7 @@ const TaskboardContextProvider = (props) => {
     const [loading, setLoading] = useState(true)
     const [tasks, setTasks] = useState([])
     const [columns, setColumns] = useState([])
+    const [columnOrder, setColumnOrder] = useState([])
 
     useEffect(() => {
         const subscriber = db
@@ -34,6 +35,17 @@ const TaskboardContextProvider = (props) => {
         return () => subscriber()
     }, [])
 
+    useEffect(() => {
+        const subscriber = db
+        .collection('columnOrder').onSnapshot(querySnapshot => {
+            setColumnOrder(querySnapshot.docs.map((doc) => ({
+                id: doc.id,
+                ...doc.data()
+            }))) // end setColumnOrder
+        }) // end collection call
+        return () => subscriber()
+    }, [])
+
     if (loading) {
         return <h1>Loading data...</h1>
     }
@@ -49,7 +61,7 @@ const TaskboardContextProvider = (props) => {
     }
 
     return (
-        <TaskboardContext.Provider value={{tasks, columns, addTask}}>
+        <TaskboardContext.Provider value={{tasks, columns, columnOrder, addTask}}>
             {props.children}
         </TaskboardContext.Provider>
     )
