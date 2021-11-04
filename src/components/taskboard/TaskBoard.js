@@ -13,7 +13,7 @@ const TaskBoard = () => {
 
     const {tasks, columns, columnOrder} = useContext(TaskboardContext)
     // const [data, setData] = useState(InitialData)
-    
+    console.log('columnOrder', columnOrder)
 
     // console.log('columnOrder', columnOrder)
 
@@ -117,16 +117,21 @@ const TaskBoard = () => {
                         {...provided.droppableProps}
                         ref={provided.innerRef}
                     >
-                        <ul>
+                        {/* <ul>
                             {tasks.map(task => (
                                 <li key={task.id}>{task.content}</li>
                             ))}
                         </ul>
+                        <ul>
+                            {columns.map(column => (
+                                <li key={column.id}>{column.title}</li>
+                            ))}
+                        </ul> */}
 
-                        {/* {columnOrder.map((columnId, index) => {
+                        {columnOrder.map((columnId, index) => {
                             const column = columns[columnId]
                             const tasks = column.taskIds.map(taskId => tasks[taskId])
-                            
+                      
                             return (
                                 <Column
                                     key={column.id}
@@ -135,7 +140,7 @@ const TaskBoard = () => {
                                     index={index}
                                 />
                             )
-                        })} */}
+                        })}
                         {provided.placeholder}
                     </Container>
                 )}

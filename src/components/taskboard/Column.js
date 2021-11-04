@@ -40,9 +40,9 @@ const Column = ({column, tasks, index}) => {
                                 {...provided.droppableProps}
                                 isDraggingOver={snapshot.isDraggingOver}
                             >
-                                {tasks.map((task, index) => (
+                                {/* {tasks.map((task, index) => (
                                     <Task key={task.id} task={task} index={index} />
-                                ))}
+                                ))} */}
                                 {provided.placeholder}
                             </TaskList>
                         )}
