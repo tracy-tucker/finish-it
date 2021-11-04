@@ -1,8 +1,7 @@
 import React, { useContext } from 'react'
 // import {InitialData} from './InitialData'
 import { TaskboardContext } from '../../context/TaskboardContext'
-// import { ColumnContext } from '../../context/ColumnsContext';
-// import Column from './Column'
+import Column from './Column'
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import styled from 'styled-components'
 
@@ -14,8 +13,9 @@ const TaskBoard = () => {
 
     const {tasks, columns, columnOrder} = useContext(TaskboardContext)
     // const [data, setData] = useState(InitialData)
-    console.log('columns', columns)
-    console.log('columnOrder', columnOrder)
+    
+
+    // console.log('columnOrder', columnOrder)
 
     const onDragStart = () => {
         document.body.style.color='#EEE'
@@ -117,14 +117,15 @@ const TaskBoard = () => {
                         {...provided.droppableProps}
                         ref={provided.innerRef}
                     >
-                        {/* <ul>
+                        <ul>
                             {tasks.map(task => (
-                                <li>{task.content}</li>
+                                <li key={task.id}>{task.content}</li>
                             ))}
-                        </ul> */}
-                        {/* {data.columnOrder.map((columnId, index) => {
-                            const column = data.columns[columnId]
-                            const tasks = column.taskIds.map(taskId => data.tasks[taskId])
+                        </ul>
+
+                        {/* {columnOrder.map((columnId, index) => {
+                            const column = columns[columnId]
+                            const tasks = column.taskIds.map(taskId => tasks[taskId])
                             
                             return (
                                 <Column
