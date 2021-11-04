@@ -1,9 +1,9 @@
 import React, { createContext, useState, useEffect } from 'react'
 import { db } from '../firebase/config'
 
-export const TaskContext = createContext();
+export const TaskboardContext = createContext();
 
-const TaskContextProvider = (props) => {
+const TaskboardContextProvider = (props) => {
 
     const [loading, setLoading] = useState(true)
     const [tasks, setTasks] = useState([])
@@ -49,10 +49,10 @@ const TaskContextProvider = (props) => {
     }
 
     return (
-        <TaskContext.Provider value={{tasks, columns, addTask}}>
+        <TaskboardContext.Provider value={{tasks, columns, addTask}}>
             {props.children}
-        </TaskContext.Provider>
+        </TaskboardContext.Provider>
     )
 }
 
-export default TaskContextProvider
+export default TaskboardContextProvider

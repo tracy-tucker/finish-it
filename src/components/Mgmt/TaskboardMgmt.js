@@ -1,17 +1,17 @@
 import React from 'react'
-import TaskContextProvider from '../../context/TasksContext'
+import TaskboardContextProvider from '../../context/TaskboardContext'
 import TaskBoard from '../taskboard/TaskBoard'
 
-const TasksMgmt = () => {
+const TaskboardMgmt = () => {
     
     return (
         <div className="EventsMgmt">
             <h2>Manage Tasks</h2>
-            <TaskContextProvider>
+            <TaskboardContextProvider>
                 <TaskBoard />
-            </TaskContextProvider>
+            </TaskboardContextProvider>
         </div>
     )
 }
 
-export default TasksMgmt
+export default TaskboardMgmt

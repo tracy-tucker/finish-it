@@ -1,8 +1,6 @@
 import React from 'react'
 import EventsMgmt from '../components/events/EventsMgmt'
-// import ColumnsMgmt from '../components/Mgmt/ColumnsMgmt'
-import TaskBoard from '../components/taskboard/TaskBoard'
-import TasksMgmt from '../components/Mgmt/TasksMgmt'
+import TaskboardMgmt from '../components/Mgmt/TaskboardMgmt'
 // import TestsMgmt from '../components/tests/TestsMgmt'
 // import TasksMgmt from '../components/tasks/TasksMgmt'
 
@@ -12,7 +10,7 @@ const Profile = () => {
             <p>PROFILE PAGE</p>
             <EventsMgmt />
             {/* <ColumnsMgmt /> */}
-            <TasksMgmt />
+            <TaskboardMgmt />
             {/* <TaskBoard /> */}
             {/* <TestsMgmt /> */}
         </div>

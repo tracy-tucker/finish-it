@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 // import {InitialData} from './InitialData'
-import { TaskContext } from '../../context/TasksContext'
+import { TaskboardContext } from '../../context/TaskboardContext'
 // import { ColumnContext } from '../../context/ColumnsContext';
 // import Column from './Column'
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
@@ -13,7 +13,7 @@ display: flex;
 const TaskBoard = () => {
 
     // const {columns} = useContext(ColumnContext)
-    const {tasks, columns} = useContext(TaskContext)
+    const {tasks, columns} = useContext(TaskboardContext)
     // const [data, setData] = useState(InitialData)
     console.log('am i working', tasks)
     console.log('are columns working', columns)
