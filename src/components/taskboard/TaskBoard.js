@@ -1,5 +1,5 @@
-import React, { useContext } from 'react'
-// import {InitialData} from './InitialData'
+import React, { useContext, useState } from 'react'
+import {InitialData} from './InitialData'
 import { TaskboardContext } from '../../context/TaskboardContext'
 import Column from './Column'
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
@@ -11,9 +11,9 @@ display: flex;
 
 const TaskBoard = () => {
 
-    const {tasks, columns, columnOrder} = useContext(TaskboardContext)
-    // const [data, setData] = useState(InitialData)
-    console.log('columnOrder', columnOrder)
+    // const {tasks, columns, columnOrder} = useContext(TaskboardContext)
+    const [data, setData] = useState(InitialData)
+    // console.log('columnOrder', columnOrder)
 
     // console.log('columnOrder', columnOrder)
 
@@ -38,21 +38,21 @@ const TaskBoard = () => {
 
         // Moving columns horizontally
         if (type === 'column') {
-            const newColumnOrder = Array.from(tasks.columnOrder)
+            const newColumnOrder = Array.from(data.columnOrder)
             newColumnOrder.splice(source.index, 1)
             newColumnOrder.splice(destination.index, 0, draggableId)
             console.log("NEW ORDER", newColumnOrder)
 
-            // setData({
-            //     ...data,
-            //     columnOrder: newColumnOrder
-            // })
+            setData({
+                ...data,
+                columnOrder: newColumnOrder
+            })
             return
         }
 
         // Moving task order
-        const start = tasks.columns[source.droppableId]
-        const finish = tasks.columns[destination.droppableId]
+        const start = data.columns[source.droppableId]
+        const finish = data.columns[destination.droppableId]
 
         if (start === finish) {
             const newTaskIds = Array.from(start.taskIds)
@@ -65,13 +65,13 @@ const TaskBoard = () => {
                 taskIds: newTaskIds,
             }
             
-            // setData({
-            //     ...data,
-            //     columns: {
-            //         ...data.columns,
-            //         [newColumn.id]: newColumn
-            //     }
-            // })
+            setData({
+                ...data,
+                columns: {
+                    ...data.columns,
+                    [newColumn.id]: newColumn
+                }
+            })
             return
         }
 
@@ -90,14 +90,14 @@ const TaskBoard = () => {
             taskIds: finishTaskIds
         }
 
-        // setData({
-        //     ...data,
-        //     columns: {
-        //         ...data.columns,
-        //         [newStart.id]: newStart,
-        //         [newFinish.id]: newFinish
-        //     }
-        // })
+        setData({
+            ...data,
+            columns: {
+                ...data.columns,
+                [newStart.id]: newStart,
+                [newFinish.id]: newFinish
+            }
+        })
         return
     }
 
@@ -117,20 +117,10 @@ const TaskBoard = () => {
                         {...provided.droppableProps}
                         ref={provided.innerRef}
                     >
-                        {/* <ul>
-                            {tasks.map(task => (
-                                <li key={task.id}>{task.content}</li>
-                            ))}
-                        </ul>
-                        <ul>
-                            {columns.map(column => (
-                                <li key={column.id}>{column.title}</li>
-                            ))}
-                        </ul> */}
 
-                        {columnOrder.map((columnId, index) => {
-                            const column = columns[columnId]
-                            const tasks = column.taskIds.map(taskId => tasks[taskId])
+                        {data.columnOrder.map((columnId, index) => {
+                            const column = data.columns[columnId]
+                            const tasks = column.taskIds.map(taskId => data.tasks[taskId])
                       
                             return (
                                 <Column
